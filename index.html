@@ -426,10 +426,101 @@
     </div>
   </section>
 
-  <!-- ══ 5. プロンプト ══ -->
+  <!-- ══ 5. 利用制限 ══ -->
   <section class="sec">
     <div class="sec-head">
       <div class="sec-num">5</div>
+      <div class="sec-title">Claudeの利用制限を知っておこう</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Claudeには<strong>週単位</strong>と<strong>5時間単位</strong>の利用上限があります</p>
+
+    <!-- 制限の仕組み図解 -->
+    <div style="display:flex;gap:16px;margin-bottom:14px;">
+      <div style="flex:1;background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:20px 18px;text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin:8px 0 4px;">週単位の上限</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">毎週リセットされる<br>全体の利用枠</div>
+      </div>
+      <div style="flex:1;background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:20px 18px;text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin:8px 0 4px;">5時間ウィンドウ</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">5時間ごとに<br>利用枠が回復</div>
+      </div>
+      <div style="flex:1;background:var(--ol);border:1.5px solid #e8d4b0;border-radius:10px;padding:20px 18px;text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="16" r="0.5" fill="var(--orange)"/></svg>
+        <div style="font-size:16px;font-weight:700;color:#7a5a1f;margin:8px 0 4px;">上限に到達</div>
+        <div style="font-size:12px;color:#7a5a1f;line-height:1.6;">次の回復まで<br>待つ必要あり</div>
+      </div>
+    </div>
+
+    <!-- 仕組みの解説 -->
+    <div style="background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:18px 24px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">利用制限の仕組み</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <div style="flex:1;text-align:center;">
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:12px;">
+            <div style="font-weight:700;color:var(--g2);margin-bottom:2px;">利用開始</div>
+            <div style="color:var(--sub);">枠を消費</div>
+          </div>
+        </div>
+        <div style="color:var(--g);font-weight:700;font-size:18px;">→</div>
+        <div style="flex:1;text-align:center;">
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:12px;">
+            <div style="font-weight:700;color:var(--orange);margin-bottom:2px;">上限到達</div>
+            <div style="color:var(--sub);">一時停止</div>
+          </div>
+        </div>
+        <div style="color:var(--g);font-weight:700;font-size:18px;">→</div>
+        <div style="flex:1;text-align:center;">
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:12px;">
+            <div style="font-weight:700;color:var(--g2);margin-bottom:2px;">5時間後</div>
+            <div style="color:var(--sub);">枠が回復！</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--sub);line-height:1.7;">
+        <span style="font-weight:600;color:var(--text);">ポイント：</span>重い処理（Opusモデル・MAX出力など）ほど枠の消費が大きくなります。<br>
+        軽い質問はSonnetやHaikuで済ませると、枠を長持ちさせられます。
+      </div>
+    </div>
+
+    <!-- 賢い使い方 -->
+    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">枠を賢く使うコツ</div>
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div class="ex ex-good" style="flex:1;">
+        <div class="ex-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          節約テクニック
+        </div>
+        <p style="font-size:13px;line-height:1.7;">
+          <strong>簡単な質問</strong> → Haikuで即答<br>
+          <strong>普段の仕事</strong> → Sonnetでバランス<br>
+          <strong>重要な仕事だけ</strong> → Opusで全力
+        </p>
+      </div>
+      <div class="ex ex-bad" style="flex:1;">
+        <div class="ex-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          枠を浪費する使い方
+        </div>
+        <p style="font-size:13px;line-height:1.7;">
+          <strong>全部Opus + MAX</strong>で使う<br>
+          <strong>同じ質問</strong>を何度も聞く<br>
+          <strong>長い会話</strong>を/compactせず続ける
+        </p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg>
+      タスクに合ったモデルと出力を選べば、1週間ずっと快適に使えます！
+    </div>
+  </section>
+
+  <!-- ══ 6. プロンプト ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">6</div>
       <div class="sec-title">プロンプト（指示）の書き方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">良いプロンプト ＝ <strong>具体的</strong>で、<strong>わかりやすく</strong>、<strong>目的を明確に</strong></p>
@@ -461,10 +552,10 @@
     </div>
   </section>
 
-  <!-- ══ 6. 出力 ══ -->
+  <!-- ══ 7. 出力 ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">6</div>
+      <div class="sec-num">7</div>
       <div class="sec-title">モデルの出力（工数）の違い</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">同じAIでも「どのモデルで動かすか」で、速さ・賢さ・コストが変わります</p>
@@ -536,10 +627,10 @@
     </div>
   </section>
 
-  <!-- ══ 7. セッション ══ -->
+  <!-- ══ 8. セッション ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">7</div>
+      <div class="sec-num">8</div>
       <div class="sec-title">セッションの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">会話の「まとまり」をセッションとして管理できます</p>
@@ -565,10 +656,10 @@
     <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M5 9V7a1 1 0 011-1h3l2 2h7a1 1 0 011 1v7a1 1 0 01-1 1H6a1 1 0 01-1-1z" fill="white"/></svg> プロジェクトやテーマごとに分けると、整理しやすくなります！</div>
   </section>
 
-  <!-- ══ 8. コンテキスト ══ -->
+  <!-- ══ 9. コンテキスト ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">8</div>
+      <div class="sec-num">9</div>
       <div class="sec-title">コンテキストとは？</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">AIが「今、あなたの話を理解するための情報」のこと</p>
@@ -594,10 +685,10 @@
     </div>
   </section>
 
-  <!-- ══ 9. コマンド ══ -->
+  <!-- ══ 10. コマンド ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">9</div>
+      <div class="sec-num">10</div>
       <div class="sec-title">スラッシュコマンドの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">便利なコマンドで、セッション管理を効率化！</p>
@@ -649,10 +740,10 @@
     </div>
   </section>
 
-  <!-- ══ 10. 学び続ける ══ -->
+  <!-- ══ 11. 学び続ける ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">10</div>
+      <div class="sec-num">11</div>
       <div class="sec-title">AIはアプデが多い！自分で探しに行く習慣を</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">AIの世界は日々進化しています</p>
