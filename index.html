@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIの基礎ガイド</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --g:#3b9b5a;--g2:#2d7a46;--gl:#e8f5ec;--gl2:#f0f9f3;
+    --bg:#f4f7f5;--white:#fff;--text:#1a2e23;--sub:#4a6355;--sub2:#6b8a78;
+    --border:#d4e0d8;--border2:#c0d4c8;
+    --orange:#e67e22;--ol:#fef3e2;
+    --blue:#3498db;--bl:#e8f4fd;
+    --red:#c0392b;--rl:#fde8e5;
+    --purple:#8e44ad;--pl:#f3e8f9;
+    --shadow:0 2px 8px rgba(30,60,40,.08);
+    --r:12px;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    background:var(--bg);color:var(--text);
+    line-height:1.7;font-size:15px;
+  }
+
+  /* ── Header ── */
+  .header{
+    background:var(--white);text-align:center;
+    padding:36px 20px 28px;border-bottom:3px solid var(--g);
+  }
+  .header h1{font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;}
+  .header h1 svg{vertical-align:-4px;margin-left:6px;}
+  .header p{font-size:14px;color:var(--sub);}
+
+  /* ── Grid ── */
+  .grid{
+    max-width:900px;margin:0 auto;padding:24px 20px;
+    display:flex;flex-direction:column;gap:20px;
+  }
+
+  /* ── Section Card ── */
+  .sec{
+    background:var(--white);border-radius:var(--r);
+    border:1.5px solid var(--border);padding:28px 36px;
+    box-shadow:var(--shadow);
+  }
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .sec-num{
+    width:34px;height:34px;background:var(--g);color:#fff;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;flex-shrink:0;
+  }
+  .sec-title{font-size:18px;font-weight:700;color:var(--text);}
+
+  /* ── Icon row ── */
+  .icon-row{display:flex;gap:12px;flex-wrap:nowrap;justify-content:space-between;}
+  .icon-item{
+    flex:1;text-align:center;
+    background:var(--gl2);border-radius:10px;padding:18px 10px 14px;
+    border:1px solid var(--border);
+  }
+  .icon-item svg{display:block;margin:0 auto 8px;color:var(--g);}
+  .icon-item .label{font-size:13px;font-weight:700;color:var(--text);line-height:1.3;}
+  .icon-item .desc{font-size:11px;color:var(--sub);margin-top:3px;line-height:1.4;}
+
+  /* ── Tip bar ── */
+  .tip{
+    background:var(--gl);border-radius:8px;padding:10px 18px;
+    font-size:13px;color:var(--g2);text-align:center;margin-top:14px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .tip svg{flex-shrink:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.08));}
+
+  /* ── Two logos ── */
+  .logo-pair{display:flex;gap:16px;margin-bottom:12px;}
+  .logo-box{
+    flex:1;text-align:center;padding:20px 16px;
+    border-radius:10px;border:1.5px solid var(--border);background:var(--gl2);
+  }
+  .logo-box .name{font-size:22px;font-weight:800;margin-bottom:2px;}
+  .logo-box .by{font-size:11px;color:var(--sub2);}
+
+  /* ── Check list ── */
+  .checks{list-style:none;font-size:13px;color:var(--sub);text-align:left;}
+  .checks li{padding:3px 0;display:flex;align-items:flex-start;gap:6px;}
+  .checks li::before{content:'';display:none;}
+  .chk{color:var(--g);flex-shrink:0;margin-top:2px;}
+
+  /* ── Flow ── */
+  .flow{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;}
+  .flow-box{
+    background:var(--gl2);border:1.5px solid var(--border2);border-radius:10px;
+    padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);
+    min-width:80px;
+  }
+  .flow-box small{display:block;font-size:10px;font-weight:400;color:var(--sub2);margin-top:2px;}
+  .flow-arrow{color:var(--g);font-size:18px;font-weight:700;}
+
+  /* ── Model table ── */
+  .mtable{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+  .mtable th{
+    background:var(--gl);padding:10px 14px;text-align:left;
+    font-weight:700;font-size:12px;color:var(--g2);
+    border-bottom:2px solid var(--border2);
+  }
+  .mtable td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--sub);}
+  .mtable td:first-child{font-weight:700;color:var(--text);}
+  .mtag{
+    display:inline-block;font-size:10px;font-weight:600;
+    padding:2px 8px;border-radius:4px;
+    background:var(--gl);color:var(--g2);margin-top:2px;
+  }
+
+  /* ── Example pair ── */
+  .ex-pair{display:flex;gap:16px;margin:12px 0;align-items:flex-start;}
+  .ex{flex:1;border-radius:10px;padding:18px 22px;font-size:14px;}
+  .ex-bad{background:var(--rl);border:1px solid #e8c4bf;}
+  .ex-good{background:var(--gl);border:1px solid var(--border2);}
+  .ex-label{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .ex-bad .ex-label{color:var(--red);}
+  .ex-good .ex-label{color:var(--g2);}
+  .ex p{margin:0;line-height:1.6;color:var(--text);}
+
+  /* ── Output icons ── */
+  .out-row{display:flex;gap:12px;flex-wrap:nowrap;justify-content:space-between;margin:12px 0;}
+  .out-item{
+    text-align:center;flex:1;
+    padding:14px 8px 10px;
+  }
+  .out-item svg{display:block;margin:0 auto 6px;color:var(--g);}
+  .out-item .olabel{font-size:13px;font-weight:700;color:var(--text);}
+  .out-item .odesc{font-size:11px;color:var(--sub2);margin-top:2px;}
+
+  /* ── Session flow ── */
+  .ses-row{display:flex;gap:16px;margin:12px 0;justify-content:center;}
+  .ses-box{
+    flex:1;max-width:220px;text-align:center;padding:20px 14px;
+    background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;
+  }
+  .ses-box svg{display:block;margin:0 auto 8px;color:var(--g);}
+  .ses-box .slabel{font-size:14px;font-weight:700;color:var(--text);}
+  .ses-box .sdesc{font-size:12px;color:var(--sub2);margin-top:3px;}
+
+  /* ── Context diagram ── */
+  .ctx-row{display:flex;gap:16px;margin:12px 0;justify-content:center;}
+  .ctx-box{
+    flex:1;max-width:200px;text-align:center;padding:18px 12px;
+    background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;
+  }
+  .ctx-box svg{display:block;margin:0 auto 6px;color:var(--g);}
+  .ctx-box .clabel{font-size:13px;font-weight:600;color:var(--text);}
+
+  /* ── Command cards ── */
+  .cmd-row{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+  .cmd{
+    display:flex;align-items:center;gap:16px;
+    background:var(--gl2);border:1px solid var(--border);
+    border-radius:8px;padding:12px 18px;
+  }
+  .cmd-name{
+    font-family:'SF Mono','Fira Code',monospace;
+    font-size:14px;font-weight:700;color:var(--g2);
+    background:var(--white);padding:5px 14px;border-radius:6px;
+    border:1px solid var(--border2);white-space:nowrap;min-width:160px;
+  }
+  .cmd-desc{font-size:14px;color:var(--sub);}
+  .cmd-use{font-size:12px;color:var(--sub2);margin-left:auto;white-space:nowrap;}
+
+  /* ── Learn row ── */
+  .learn-row{display:flex;gap:16px;margin:12px 0;justify-content:center;}
+  .learn-box{
+    flex:1;max-width:240px;text-align:center;padding:20px 14px;
+    background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;
+  }
+  .learn-box svg{display:block;margin:0 auto 8px;color:var(--g);}
+  .learn-box .llabel{font-size:14px;font-weight:700;color:var(--text);}
+  .learn-box .ldesc{font-size:11px;color:var(--sub2);margin-top:3px;}
+
+  /* ── Footer banner ── */
+  .footer-banner{
+    max-width:900px;margin:0 auto 20px;padding:0 20px;
+  }
+  .footer-inner{
+    background:var(--g);color:#fff;border-radius:var(--r);
+    padding:20px 28px;text-align:center;
+  }
+  .footer-inner p{font-size:14px;color:#fff;}
+  .footer-inner p:first-child{font-size:16px;font-weight:700;margin-bottom:4px;}
+
+  .footer{text-align:center;padding:20px;font-size:11px;color:var(--sub2);}
+
+  /* ── Warn box ── */
+  .warn{
+    background:var(--ol);border:1px solid #e8d4b0;border-radius:8px;
+    padding:8px 14px;font-size:12px;color:#7a5a1f;text-align:center;margin-top:10px;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+
+  /* ── Sub heading ── */
+  .sh{font-size:13px;font-weight:700;color:var(--text);margin:12px 0 8px;}
+
+  @media print{.sec{break-inside:avoid;box-shadow:none;}}
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<header class="header">
+  <h1>AIの基礎ガイド</h1>
+</header>
+
+<div class="grid">
+
+  <!-- ══ 1. AIで何ができる ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div class="sec-title">AIを使うと、仕事の質がこんなにも上がる！</div>
+    </div>
+    <div class="icon-row">
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div class="label">資料づくり</div>
+        <div class="desc">企画書・報告書の<br>たたき台を即作成</div>
+      </div>
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h3M7 11h2"/></svg>
+        <div class="label">Chrome拡張</div>
+        <div class="desc">要約・翻訳・検索など<br>便利機能を作成</div>
+      </div>
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+        <div class="label">データ収集</div>
+        <div class="desc">必要な情報を<br>効率よく集める</div>
+      </div>
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="15"/></svg>
+        <div class="label">統計作成</div>
+        <div class="desc">データの集計や<br>グラフ化もお任せ</div>
+      </div>
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <div class="label">チーム施策</div>
+        <div class="desc">アイデア出しから<br>計画書まで一緒に</div>
+      </div>
+    </div>
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><circle cx="12" cy="7.5" r="1.5" fill="white"/><rect x="10.5" y="10.5" width="3" height="7" rx="1.5" fill="white"/></svg>
+      AIは、あなたの"優秀なアシスタント"です！
+    </div>
+  </section>
+
+  <!-- ══ 2. 主流AI ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">2</div>
+      <div class="sec-title">主流AIは Claude と Codex(ChatGPT)</div>
+    </div>
+    <div style="display:flex;gap:24px;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+        <div class="logo-box">
+          <div class="name" style="color:var(--g2);">Claude</div>
+          <div class="by">by Anthropic</div>
+        </div>
+        <ul class="checks">
+          <li><svg class="chk" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>自然で丁寧な文章が得意</li>
+          <li><svg class="chk" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>長文の要約や整理が上手</li>
+          <li><svg class="chk" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>安全性・信頼性が高い</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+        <div class="logo-box">
+          <div class="name" style="color:var(--orange);">Codex</div>
+          <div class="by">(ChatGPT)</div>
+        </div>
+        <ul class="checks">
+          <li><svg class="chk" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>幅広い知識と企画力</li>
+          <li><svg class="chk" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>コード生成やテクニカルに強い</li>
+          <li><svg class="chk" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>スピード感のある回答</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2l3 6.2 6.8.9-4.9 4.8 1.2 6.8L12 17.3l-6.1 3.4 1.2-6.8L2.2 9.1 9 8.2z" fill="currentColor"/></svg>
+      目的やタスクに合わせて、使い分けよう！
+    </div>
+  </section>
+
+  <!-- ══ 3. Claudeの使い方 ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">3</div>
+      <div class="sec-title">Claude（デスクトップ版）の使い方</div>
+    </div>
+
+    <!-- Claude デスクトップ風UI（実機準拠） -->
+    <div style="border-radius:12px;overflow:hidden;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.25);background:#1e1e1e;">
+      <!-- タイトルバー -->
+      <div style="background:#2a2a2a;padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;gap:7px;">
+          <span style="width:11px;height:11px;border-radius:50%;background:#ef6b5e;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#f5bd4f;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#61c454;display:inline-block;"></span>
+        </div>
+        <div style="flex:1;text-align:center;font-size:12px;color:#777;">Claude</div>
+      </div>
+      <div style="display:flex;min-height:260px;">
+        <!-- サイドバー -->
+        <div style="width:180px;background:#262626;border-right:1px solid #333;padding:10px 8px;display:flex;flex-direction:column;font-size:11px;">
+          <!-- タブ切り替え -->
+          <div style="display:flex;gap:2px;background:#333;border-radius:8px;padding:2px;margin-bottom:10px;">
+            <span style="flex:1;text-align:center;padding:4px 0;color:#888;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:3px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Chat</span>
+            <span style="flex:1;text-align:center;padding:4px 0;color:#888;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:3px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="18" y2="18"/></svg>Cowork</span>
+            <span style="flex:1;text-align:center;padding:4px 0;color:#fff;background:#444;border-radius:6px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:3px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Code</span>
+          </div>
+          <!-- ナビゲーション -->
+          <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;color:#ccc;border-radius:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>新規セッション
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;color:#888;border-radius:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>ルーチン
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;color:#888;border-radius:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3z"/></svg>カスタマイズ
+            </div>
+          </div>
+          <!-- ピン留め済み -->
+          <div style="color:#666;font-size:9px;padding:2px 8px;margin-bottom:2px;">ピン留め済み</div>
+          <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:8px;">
+            <div style="padding:4px 8px;color:#999;border-radius:5px;display:flex;align-items:center;gap:5px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block;"></span>プラグイン
+            </div>
+            <div style="padding:4px 8px;color:#999;border-radius:5px;display:flex;align-items:center;gap:5px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block;"></span>スキル
+            </div>
+          </div>
+          <!-- プロジェクト -->
+          <div style="color:#666;font-size:9px;padding:2px 8px;margin-bottom:2px;">営業資料</div>
+          <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:6px;">
+            <div style="padding:4px 8px;color:#999;border-radius:5px;display:flex;align-items:center;gap:5px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#e8a94a;display:inline-block;"></span>Q3提案書の下書き
+            </div>
+            <div style="padding:4px 8px;color:#999;border-radius:5px;display:flex;align-items:center;gap:5px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block;"></span>競合リサーチまとめ
+            </div>
+          </div>
+          <div style="color:#666;font-size:9px;padding:2px 8px;margin-bottom:2px;">新人研修</div>
+          <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:6px;">
+            <div style="padding:4px 8px;color:#fff;background:#3a3a3a;border-radius:5px;display:flex;align-items:center;gap:5px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#5b8def;display:inline-block;"></span>AIスライド-基礎
+            </div>
+          </div>
+          <!-- ユーザー -->
+          <div style="margin-top:auto;padding:6px 8px;display:flex;align-items:center;gap:6px;color:#999;border-top:1px solid #333;padding-top:8px;">
+            <span style="width:16px;height:16px;border-radius:50%;background:#444;display:inline-flex;align-items:center;justify-content:center;font-size:8px;color:#ccc;">U</span>
+            <span>ユーザー・Max</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:auto;"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <!-- メインエリア -->
+        <div style="flex:1;display:flex;flex-direction:column;">
+          <div style="flex:1;padding:28px 32px;"></div>
+          <!-- Claudeロゴ + 入力エリア -->
+          <div style="padding:0 20px 0;margin-bottom:8px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2" fill="#d4845a"/><line x1="12" y1="4" x2="12" y2="7" stroke="#d4845a" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="20" stroke="#d4845a" stroke-width="2" stroke-linecap="round"/><line x1="4.9" y1="7.5" x2="7.5" y2="9" stroke="#d4845a" stroke-width="2" stroke-linecap="round"/><line x1="16.5" y1="15" x2="19.1" y2="16.5" stroke="#d4845a" stroke-width="2" stroke-linecap="round"/><line x1="4.9" y1="16.5" x2="7.5" y2="15" stroke="#d4845a" stroke-width="2" stroke-linecap="round"/><line x1="16.5" y1="9" x2="19.1" y2="7.5" stroke="#d4845a" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <!-- 入力エリア -->
+          <div style="padding:0 20px 8px;">
+            <div style="border:1px solid #444;border-radius:12px;padding:12px 16px;display:flex;align-items:center;">
+              <span style="flex:1;font-size:13px;color:#666;">コマンドは / を入力</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><polyline points="9 10 4 15 9 20"/><path d="M20 4v7a4 4 0 01-4 4H4"/></svg>
+            </div>
+          </div>
+          <!-- ツールバー -->
+          <div style="padding:4px 20px 12px;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:10px;color:#1a1a1a;background:#b8d86b;padding:2px 8px;border-radius:10px;font-weight:600;">許可をバイパス</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span style="display:flex;align-items:center;gap:3px;color:#888;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span style="flex:1;"></span>
+            <span style="font-size:11px;color:#888;">Opus 4.6・高速</span>
+            <span style="font-size:11px;color:#888;margin-left:6px;">Max</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b8def" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 019 9" stroke="#333" stroke-width="2.5"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 7.5h10a1 1 0 011 1v6a1 1 0 01-1 1h-4l-2.5 2.5v-2.5H7a1 1 0 01-1-1v-6a1 1 0 011-1z" fill="white"/></svg> セッション（会話のまとまり）を分けると、テーマごとに整理できて便利！</div>
+  </section>
+
+  <!-- ══ 4. モデルの違い ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">4</div>
+      <div class="sec-title">モデルの違い：得意・不得意を知ろう</div>
+    </div>
+    <table class="mtable">
+      <thead><tr><th>モデル</th><th>得意なこと</th><th>不得意なこと</th><th>おすすめ</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Claude<br><span class="mtag">Opus / Sonnet</span></td>
+          <td>長文の要約・整理<br>丁寧な文章作成<br>論理的な思考整理</td>
+          <td>最新情報の即時性<br>（やや弱い）</td>
+          <td>報告書・議事録<br>情報の整理・要約</td>
+        </tr>
+        <tr>
+          <td>Codex<br><span class="mtag">ChatGPT / GPT-4o</span></td>
+          <td>幅広い知識・情報<br>アイデア出し・企画<br>コード生成・修正</td>
+          <td>長文の細かい要約<br>（やや苦手）</td>
+          <td>アイデア出し<br>マーケ・企画立案</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="warn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L9 9H2l6 4.5L5.5 22 12 17l6.5 5-2.5-8.5L22 9h-7z"/></svg>
+      完璧なAIは存在しない。特徴を理解して使い分けるのがコツ！
+    </div>
+  </section>
+
+  <!-- ══ 5. プロンプト ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">5</div>
+      <div class="sec-title">プロンプト（指示）の書き方</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">良いプロンプト ＝ <strong>具体的</strong>で、<strong>やさしく</strong>、<strong>目的を明確に</strong></p>
+
+    <div class="ex-pair">
+      <div class="ex ex-bad">
+        <div class="ex-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          悪い例（あいまい）
+        </div>
+        <p>「資料を作って」</p>
+        <div style="margin-top:6px;font-size:10px;color:var(--sub2);">↓ イメージと違う結果に…</div>
+      </div>
+      <div class="ex ex-good">
+        <div class="ex-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          良い例（具体的）
+        </div>
+        <p><strong>目的：</strong>社内会議の提案資料<br>
+        <strong>対象：</strong>経営層<br>
+        <strong>形式：</strong>箇条書き、A4 1枚<br>
+        <strong>トーン：</strong>シンプルでわかりやすく</p>
+      </div>
+    </div>
+
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg>
+      ポイント：目的・対象・内容・形式・トーンを伝えよう！
+    </div>
+  </section>
+
+  <!-- ══ 6. 出力 ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">6</div>
+      <div class="sec-title">モデルの出力（工数）の違い</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">同じAIでも「どのモデルで動かすか」で、速さ・賢さ・コストが変わります</p>
+
+    <!-- 速さ→賢さのスペクトラム図 -->
+    <div style="background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:12px;font-weight:700;color:var(--g2);">速い・軽い</span>
+        <div style="flex:1;height:6px;background:linear-gradient(to right,#8dd4a0,#3b9b5a,#1e5c33);border-radius:3px;margin:0 16px;"></div>
+        <span style="font-size:12px;font-weight:700;color:#1e5c33;">賢い・深い</span>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:10px;padding:16px 12px;border:1px solid var(--border);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8dd4a0" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <div style="font-size:15px;font-weight:700;margin:6px 0 2px;">Haiku</div>
+          <div style="font-size:11px;color:var(--sub2);">即レス・大量処理向け</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:4px;">メール分類、簡単な質問、<br>定型文の作成など</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:10px;padding:16px 12px;border:2px solid var(--g);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b9b5a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div style="font-size:15px;font-weight:700;margin:6px 0 2px;color:var(--g2);">Sonnet</div>
+          <div style="font-size:11px;color:var(--sub2);">バランス型（普段使い）</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:4px;">資料作成、要約、<br>企画書のたたき台など</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:10px;padding:16px 12px;border:1px solid var(--border);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1e5c33" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
+          <div style="font-size:15px;font-weight:700;margin:6px 0 2px;">Opus</div>
+          <div style="font-size:11px;color:var(--sub2);">最高精度・じっくり思考</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:4px;">複雑な分析、戦略立案、<br>専門的な文書作成など</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 出力レベル（小→MAX） -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">さらに「出力レベル」でも調整できる</div>
+      <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">同じモデルでも、どれだけ深く考えさせるかを4段階で設定できます</p>
+      <div style="display:flex;gap:8px;">
+        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
+          <div style="font-size:20px;font-weight:800;color:#8dd4a0;">小</div>
+          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">サクッと即答</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:3px;">YES/NO確認<br>簡単な質問</div>
+          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">深い考察は苦手</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
+          <div style="font-size:20px;font-weight:800;color:#5db876;">中</div>
+          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">普段使い</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:3px;">メール文面<br>ちょっとした相談</div>
+          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">複雑な依頼は浅い</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1.5px solid var(--g);">
+          <div style="font-size:20px;font-weight:800;color:var(--g2);">高</div>
+          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">しっかり思考</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:3px;">企画書作成<br>報告書のたたき台</div>
+          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">時間・コスト増</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
+          <div style="font-size:20px;font-weight:800;color:#1e5c33;">MAX</div>
+          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">全力で深掘り</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:3px;">戦略立案<br>複雑な分析</div>
+          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">時間・コスト大</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg>
+      モデル選び + 出力レベルの組み合わせで、工数（時間・コスト）を最適化しよう！
+    </div>
+  </section>
+
+  <!-- ══ 7. セッション ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">7</div>
+      <div class="sec-title">セッションの使い方</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">会話の「まとまり」をセッションとして管理できます</p>
+
+    <div class="ses-row">
+      <div class="ses-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <div class="slabel">新しいセッション</div>
+        <div class="sdesc">話題を分けて管理</div>
+      </div>
+      <div class="ses-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="slabel">会話を続ける</div>
+        <div class="sdesc">文脈を覚えてくれる</div>
+      </div>
+      <div class="ses-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        <div class="slabel">振り返り・再開</div>
+        <div class="sdesc">過去のやりとりを活用</div>
+      </div>
+    </div>
+
+    <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M5 9V7a1 1 0 011-1h3l2 2h7a1 1 0 011 1v7a1 1 0 01-1 1H6a1 1 0 01-1-1z" fill="white"/></svg> プロジェクトやテーマごとに分けると、整理しやすくなります！</div>
+  </section>
+
+  <!-- ══ 8. コンテキスト ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">8</div>
+      <div class="sec-title">コンテキストとは？</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">AIが「今、あなたの話を理解するための情報」のこと</p>
+
+    <div class="ctx-row">
+      <div class="ctx-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="clabel">これまでの<br>会話内容</div>
+      </div>
+      <div class="ctx-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        <div class="clabel">あなたが提出した<br>資料や情報</div>
+      </div>
+      <div class="ctx-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <div class="clabel">あなたの<br>目的やゴール</div>
+      </div>
+    </div>
+
+    <div class="tip" style="background:var(--ol);color:#7a5a1f;border:1px solid #e8d4b0;">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><circle cx="12" cy="7.5" r="1.5" fill="white"/><rect x="10.5" y="10.5" width="3" height="7" rx="1.5" fill="white"/></svg>
+      コンテキストが多いほど、AIはより的確にサポートできます！
+    </div>
+  </section>
+
+  <!-- ══ 9. コマンド ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">9</div>
+      <div class="sec-title">スラッシュコマンドの使い方</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">便利なコマンドで、セッション管理を効率化！</p>
+
+    <div class="cmd-row">
+      <div class="cmd">
+        <div class="cmd-name">/save-session</div>
+        <div class="cmd-desc">現在の会話をセーブ（保存）する</div>
+        <div class="cmd-use">後で見返せる</div>
+      </div>
+      <div class="cmd">
+        <div class="cmd-name">/resume-session</div>
+        <div class="cmd-desc">保存した会話を再開する</div>
+        <div class="cmd-use">途中から続き</div>
+      </div>
+      <div class="cmd">
+        <div class="cmd-name">/compact</div>
+        <div class="cmd-desc">会話を要約して整理する</div>
+        <div class="cmd-use">長い会話に</div>
+      </div>
+    </div>
+
+    <!-- コンテキスト使用率の目安 -->
+    <div style="background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:18px 24px;margin-top:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">コンテキスト使用率の目安</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div style="flex:1;height:20px;background:#e0e0e0;border-radius:10px;overflow:hidden;position:relative;">
+          <div style="width:55%;height:100%;background:linear-gradient(to right,#8dd4a0,#e67e22);border-radius:10px;"></div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;font-weight:700;color:var(--white);">50-60%</div>
+        </div>
+        <span style="font-size:11px;font-weight:700;color:#e67e22;white-space:nowrap;">要注意</span>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:10px 14px;border:1px solid var(--border);text-align:center;">
+          <div style="font-size:13px;font-weight:700;color:var(--g2);">/compact で圧縮</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">会話を要約して容量を回復<br>→ 同じ話題を続けたいとき</div>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--sub2);display:flex;align-items:center;">or</div>
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:10px 14px;border:1px solid var(--border);text-align:center;">
+          <div style="font-size:13px;font-weight:700;color:var(--g2);">新しいセッションを開始</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">まっさらな状態でリスタート<br>→ 話題が変わるとき</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M13.7 3.3a2 2 0 00-3.4 0L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3z" fill="currentColor"/><rect x="11" y="9.5" width="2" height="5" rx="1" fill="white"/><circle cx="12" cy="16.5" r="1.2" fill="white"/></svg>
+      50-60%を超えるとAIの精度が落ち始めます。早めの対処がポイント！
+    </div>
+  </section>
+
+  <!-- ══ 10. 学び続ける ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">10</div>
+      <div class="sec-title">AIはアプデが多い！自分で探しに行く習慣を</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">AIの世界は日々進化しています</p>
+
+    <div class="learn-row">
+      <div class="learn-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <div class="llabel">新機能が<br>どんどん追加される</div>
+      </div>
+      <div class="learn-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="llabel">教えてもらうより<br>自分で探す方が早い！</div>
+      </div>
+      <div class="learn-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        <div class="llabel">自分で試す人が<br>一番使いこなせる！</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══ Footer Banner ═══ -->
+<div class="footer-banner">
+  <div class="footer-inner">
+    <p>AIは「使う人の思考を拡張するパートナー」です。</p>
+    <p>まずは使ってみることから始めましょう！</p>
+  </div>
+</div>
+
+<footer class="footer">AI活用 基礎研修資料 ― 2026年6月作成</footer>
+
+</body>
+</html>
