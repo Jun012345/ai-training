@@ -205,8 +205,9 @@
   .sh{font-size:13px;font-weight:700;color:var(--text);margin:12px 0 8px;}
 
   /* ── Accordion ── */
-  .accordion{
+  .acc-group{
     max-width:900px;margin:20px auto 0;padding:0 20px;
+    display:flex;flex-direction:column;gap:12px;
   }
   .accordion details{
     background:var(--white);border-radius:var(--r);
@@ -226,7 +227,6 @@
   .accordion summary::before{display:none;}
   .accordion .arrow{
     width:28px;height:28px;border-radius:50%;
-    background:var(--g);color:#fff;
     display:flex;align-items:center;justify-content:center;
     transition:transform .3s;flex-shrink:0;
   }
@@ -234,6 +234,10 @@
   .accordion .acc-body{
     border-top:1.5px solid var(--border);
     animation:slideDown .3s ease;
+  }
+  .accordion .acc-badge{
+    font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;
+    margin-left:4px;
   }
   @keyframes slideDown{
     from{opacity:0;max-height:0;}
@@ -250,10 +254,12 @@
   <h1>AIの基礎ガイド</h1>
 </header>
 
-<div class="accordion">
+<div class="acc-group">
+
+  <div class="accordion">
   <details>
     <summary>
-      <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
+      <span class="arrow" style="background:var(--g);color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
       ベーシック
     </summary>
     <div class="acc-body">
@@ -820,7 +826,43 @@
 
     </div><!-- /acc-body -->
   </details>
-</div><!-- /accordion -->
+  </div><!-- /accordion basic -->
+
+  <div class="accordion">
+  <details>
+    <summary>
+      <span class="arrow" style="background:var(--blue);color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
+      オプショナル
+      <span class="acc-badge" style="background:var(--bl);color:var(--blue);">準備中</span>
+    </summary>
+    <div class="acc-body">
+      <div style="padding:40px 32px;text-align:center;color:var(--sub);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="display:block;margin:0 auto 12px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
+        <div style="font-size:13px;">応用テクニックや便利な使い方を追加予定です</div>
+      </div>
+    </div>
+  </details>
+  </div><!-- /accordion optional -->
+
+  <div class="accordion">
+  <details>
+    <summary>
+      <span class="arrow" style="background:var(--purple);color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
+      アドバンス
+      <span class="acc-badge" style="background:var(--pl);color:var(--purple);">準備中</span>
+    </summary>
+    <div class="acc-body">
+      <div style="padding:40px 32px;text-align:center;color:var(--sub);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" style="display:block;margin:0 auto 12px;"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
+        <div style="font-size:13px;">上級者向けの活用法を追加予定です</div>
+      </div>
+    </div>
+  </details>
+  </div><!-- /accordion advanced -->
+
+</div><!-- /acc-group -->
 
 <footer class="footer">AI活用 基礎研修資料 ― 2026年6月作成</footer>
 
