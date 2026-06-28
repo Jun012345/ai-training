@@ -206,28 +206,30 @@
 
   /* ── Tab Buttons ── */
   .tab-wrap{
-    max-width:900px;margin:20px auto 0;padding:0 20px;
+    max-width:900px;margin:0 auto;padding:28px 20px 0;
   }
   .tab-btns{
-    display:flex;gap:12px;
+    display:flex;gap:14px;
   }
   .tab-btn{
-    flex:1;display:flex;align-items:center;justify-content:center;gap:10px;
-    padding:20px 16px;cursor:pointer;
-    font-size:18px;font-weight:800;color:var(--text);
-    background:var(--white);border:1.5px solid var(--border);
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    padding:28px 16px 22px;cursor:pointer;
+    font-size:17px;font-weight:800;color:var(--text);
+    background:var(--white);border:2px solid var(--border);
     border-radius:var(--r);box-shadow:var(--shadow);
     user-select:none;transition:all .2s;
   }
-  .tab-btn:hover{background:var(--gl2);}
-  .tab-btn.active{border-color:var(--g);background:var(--gl2);box-shadow:0 2px 12px rgba(59,155,90,.15);}
-  .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);}
-  .tab-btn[data-tab="advanced"].active{border-color:var(--purple);background:var(--pl);}
+  .tab-btn:hover{background:var(--gl2);transform:translateY(-2px);box-shadow:0 4px 16px rgba(30,60,40,.12);}
+  .tab-btn.active{border-color:var(--g);background:var(--gl2);box-shadow:0 4px 16px rgba(59,155,90,.18);}
+  .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);box-shadow:0 4px 16px rgba(52,152,219,.18);}
+  .tab-btn[data-tab="advanced"].active{border-color:var(--purple);background:var(--pl);box-shadow:0 4px 16px rgba(142,68,173,.18);}
   .tab-btn .dot{
-    width:10px;height:10px;border-radius:50%;flex-shrink:0;
+    width:36px;height:36px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
   }
   .tab-btn .badge{
-    font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;
+    font-size:10px;font-weight:600;padding:2px 10px;border-radius:10px;
+    margin-top:-2px;
   }
   .tab-panel{
     display:none;
@@ -249,16 +251,16 @@
 <div class="tab-wrap">
   <div class="tab-btns">
     <button class="tab-btn" data-tab="basic" onclick="switchTab('basic')">
-      <span class="dot" style="background:var(--g);"></span>
+      <span class="dot" style="background:var(--gl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
       ベーシック
     </button>
     <button class="tab-btn" data-tab="optional" onclick="switchTab('optional')">
-      <span class="dot" style="background:var(--blue);"></span>
+      <span class="dot" style="background:var(--bl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
       オプショナル
       <span class="badge" style="background:var(--bl);color:var(--blue);">準備中</span>
     </button>
     <button class="tab-btn" data-tab="advanced" onclick="switchTab('advanced')">
-      <span class="dot" style="background:var(--purple);"></span>
+      <span class="dot" style="background:var(--pl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/></svg></span>
       アドバンス
       <span class="badge" style="background:var(--pl);color:var(--purple);">準備中</span>
     </button>
