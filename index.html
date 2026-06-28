@@ -212,9 +212,9 @@
     display:flex;gap:14px;
   }
   .tab-btn{
-    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-    padding:28px 16px 22px;cursor:pointer;
-    font-size:17px;font-weight:800;color:var(--text);
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    padding:24px 16px 20px;cursor:pointer;
+    font-size:18px;font-weight:800;color:var(--text);
     background:var(--white);border:2px solid var(--border);
     border-radius:var(--r);box-shadow:var(--shadow);
     user-select:none;transition:all .2s;
@@ -224,7 +224,7 @@
   .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);box-shadow:0 4px 16px rgba(52,152,219,.18);}
   .tab-btn[data-tab="advanced"].active{border-color:var(--purple);background:var(--pl);box-shadow:0 4px 16px rgba(142,68,173,.18);}
   .tab-btn .dot{
-    width:36px;height:36px;border-radius:50%;flex-shrink:0;
+    width:48px;height:48px;border-radius:50%;flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
   }
   .tab-btn .badge{
@@ -251,16 +251,15 @@
 <div class="tab-wrap">
   <div class="tab-btns">
     <button class="tab-btn" data-tab="basic" onclick="switchTab('basic')">
-      <span class="dot" style="background:var(--gl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+      <span class="dot" style="background:var(--gl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
       ベーシック
     </button>
     <button class="tab-btn" data-tab="optional" onclick="switchTab('optional')">
-      <span class="dot" style="background:var(--bl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+      <span class="dot" style="background:var(--bl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
       オプショナル
-      <span class="badge" style="background:var(--bl);color:var(--blue);">準備中</span>
     </button>
     <button class="tab-btn" data-tab="advanced" onclick="switchTab('advanced')">
-      <span class="dot" style="background:var(--pl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/></svg></span>
+      <span class="dot" style="background:var(--pl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/></svg></span>
       アドバンス
       <span class="badge" style="background:var(--pl);color:var(--purple);">準備中</span>
     </button>
@@ -717,26 +716,96 @@
       <div class="sec-num">9</div>
       <div class="sec-title">コンテキストとは？</div>
     </div>
-    <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">AIが「今、あなたの話を理解するための情報」のこと</p>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIとの会話はすべて「コンテキスト」として蓄積されます。あなたが伝えた情報が多いほど、AIはより正確に応えられます</p>
 
-    <div class="ctx-row">
-      <div class="ctx-box">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <div class="clabel">これまでの<br>会話内容</div>
+    <!-- コンテキストの3要素 -->
+    <div style="display:flex;gap:14px;margin:0 0 4px;">
+      <div style="flex:1;text-align:center;padding:20px 12px 16px;background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;">会話の履歴</div>
+        <div style="font-size:11px;color:var(--sub2);line-height:1.5;">これまでの<br>やり取りすべて</div>
       </div>
-      <div class="ctx-box">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        <div class="clabel">あなたが提出した<br>資料や情報</div>
+      <div style="flex:1;text-align:center;padding:20px 12px 16px;background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.8"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;">提出した資料</div>
+        <div style="font-size:11px;color:var(--sub2);line-height:1.5;">ファイル・画像<br>貼り付けたテキスト</div>
       </div>
-      <div class="ctx-box">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-        <div class="clabel">あなたの<br>目的やゴール</div>
+      <div style="flex:1;text-align:center;padding:20px 12px 16px;background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;">目的・指示</div>
+        <div style="font-size:11px;color:var(--sub2);line-height:1.5;">あなたのゴールと<br>具体的なリクエスト</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin:8px 0 0;">
+      <span style="font-size:11px;color:var(--sub2);background:var(--gl2);padding:4px 14px;border-radius:12px;">↑ これらすべてが「コンテキスト」としてAIに送られる</span>
+    </div>
+
+    <!-- コンテキストの容量は有限 -->
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:20px 24px;margin-top:18px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        1セッション＝コップ1杯の水
+      </div>
+      <p style="font-size:13px;color:var(--sub);margin:0 0 14px;line-height:1.7;">セッション（1つの会話）で使えるコンテキストには<strong style="color:var(--text);">上限</strong>があります。<br>会話が長くなるほどコップの水が溢れていき、<strong style="color:var(--red);">AIの回答品質が落ちていきます。</strong></p>
+
+      <!-- 劣化グラデーションバー -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <span style="font-size:11px;font-weight:600;color:var(--g2);white-space:nowrap;">会話の始め</span>
+        <div style="flex:1;height:28px;border-radius:14px;overflow:hidden;position:relative;background:#e0e0e0;">
+          <div style="width:100%;height:100%;background:linear-gradient(to right,var(--g) 0%,var(--g) 30%,#e8b84b 55%,#e67e22 75%,var(--red) 100%);border-radius:14px;"></div>
+          <div style="position:absolute;left:15%;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:white;">快適</div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:10px;font-weight:700;color:white;">やや鈍化</div>
+          <div style="position:absolute;right:8%;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:white;">劣化</div>
+        </div>
+        <span style="font-size:11px;font-weight:600;color:var(--red);white-space:nowrap;">長い会話</span>
+      </div>
+      <p style="font-size:11px;color:var(--sub2);margin:0;text-align:center;">会話が長引くほどAIの理解力・正確さが下がる → 「短く的確に」が大事！</p>
+    </div>
+
+    <!-- 効率的に使うコツ -->
+    <div style="margin-top:16px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">セッションを効率よく使うコツ</div>
+      <div class="ex-pair">
+        <div class="ex ex-good">
+          <div class="ex-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+            効率的な使い方
+          </div>
+          <p style="font-size:13px;">
+            <strong>指示は具体的・簡潔に</strong><br>
+            目的→対象→形式を1回で伝える<br><br>
+            <strong>話題が変わったら新セッション</strong><br>
+            コンテキストをリセットして快適に<br><br>
+            <strong>長くなったら /compact</strong><br>
+            会話を圧縮して容量を回復
+          </p>
+        </div>
+        <div class="ex ex-bad">
+          <div class="ex-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+            やりがちなNG
+          </div>
+          <p style="font-size:13px;">
+            <strong>1つのセッションで何でもやる</strong><br>
+            話題が混ざり、精度が低下<br><br>
+            <strong>曖昧な指示を何度もやり直し</strong><br>
+            やり直すたびに容量を消費<br><br>
+            <strong>長い会話を続けっぱなし</strong><br>
+            AIの回答がどんどん雑になる
+          </p>
+        </div>
       </div>
     </div>
 
-    <div class="tip" style="background:var(--ol);color:#7a5a1f;border:1px solid #e8d4b0;">
-      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><circle cx="12" cy="7.5" r="1.5" fill="white"/><rect x="10.5" y="10.5" width="3" height="7" rx="1.5" fill="white"/></svg>
-      コンテキストが多いほど、AIはより的確にサポートできます！
+    <div class="tip" style="background:var(--gl);color:var(--g2);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      コンパクトに、的確に。セッションを賢く使えば、AIは最後まで優秀なパートナーです！
     </div>
   </section>
 
@@ -833,13 +902,292 @@
 
 <!-- ═══ Optional Panel ═══ -->
 <div class="tab-panel" id="panel-optional">
-  <div style="max-width:900px;margin:0 auto;padding:40px 20px;">
-    <div style="background:var(--white);border-radius:var(--r);border:1.5px solid var(--border);box-shadow:var(--shadow);padding:48px 32px;text-align:center;color:var(--sub);">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="display:block;margin:0 auto 14px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      <div style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
-      <div style="font-size:14px;">応用テクニックや便利な使い方を追加予定です</div>
+<div class="grid">
+
+  <!-- ══ O-1. スキルとは ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">1</div>
+      <div class="sec-title">スキルとは？</div>
     </div>
-  </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeに「事前指示書」を渡して、特定の作業をもっと上手にさせる仕組みです</p>
+
+    <div class="ex-pair">
+      <div class="ex" style="background:var(--rl);border:1px solid #e8c4bf;">
+        <div class="ex-label" style="color:var(--red);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+          スキルなし
+        </div>
+        <p style="font-size:13px;">
+          「提案資料を作って。<br>フォーマットはA4で…<br>対象は経営層で…<br>トーンは丁寧に…」<br>
+          <span style="color:var(--sub2);font-size:11px;">→ 毎回同じ前提を伝える手間</span>
+        </p>
+      </div>
+      <div class="ex" style="background:var(--bl);border:1px solid #c4dff0;">
+        <div class="ex-label" style="color:var(--blue);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+          スキルあり
+        </div>
+        <p style="font-size:13px;">
+          「提案資料を作って」<br><br>
+          <span style="color:var(--sub2);font-size:11px;">→ フォーマット・対象・トーンは<br>スキルが自動で適用！</span><br>
+          <strong style="color:var(--blue);">時間短縮＋品質アップ</strong>
+        </p>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:14px;">
+      <div style="flex:1;background:var(--bl);border:1px solid #c4dff0;border-radius:8px;padding:12px;text-align:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 4px;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">毎回の前提説明が不要</div>
+      </div>
+      <div style="flex:1;background:var(--bl);border:1px solid #c4dff0;border-radius:8px;padding:12px;text-align:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 4px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">回答の一貫性が向上</div>
+      </div>
+      <div style="flex:1;background:var(--bl);border:1px solid #c4dff0;border-radius:8px;padding:12px;text-align:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">作業スピードUP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ O-2. スキルの2つの種類 ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">2</div>
+      <div class="sec-title">スキルの2つの種類</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">適用範囲の違いで、使い分けるのがポイントです</p>
+
+    <div style="display:flex;gap:14px;margin-bottom:14px;">
+      <div style="flex:1;text-align:center;padding:20px 14px 16px;background:var(--bl);border:1.5px solid var(--blue);border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">グローバルスキル</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">
+          <strong style="color:var(--text);">すべての会話</strong>で常に有効<br>
+          自分の「いつものルール」を設定
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--sub2);background:var(--white);padding:8px;border-radius:6px;line-height:1.5;">
+          例：文章は丁寧語で統一<br>回答は箇条書きで簡潔に
+        </div>
+      </div>
+      <div style="flex:1;text-align:center;padding:20px 14px 16px;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--white);border:1.5px solid var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">プロジェクトスキル</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">
+          <strong style="color:var(--text);">特定の作業</strong>でだけ有効<br>
+          仕事ごとの専門ルールを設定
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--sub2);background:var(--white);padding:8px;border-radius:6px;line-height:1.5;">
+          例：営業資料はA4・経営層向け<br>週報は3項目のフォーマット
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border-radius:8px;padding:10px 18px;font-size:13px;color:var(--blue);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><circle cx="12" cy="7.5" r="1.5" fill="white"/><rect x="10.5" y="10.5" width="3" height="7" rx="1.5" fill="white"/></svg>
+      共通ルールはグローバル、仕事別の型はプロジェクトで使い分け！
+    </div>
+  </section>
+
+  <!-- ══ O-3. スキルの導入と作り方 ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">3</div>
+      <div class="sec-title">スキルの導入と作り方</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">既存のスキルを使うことも、自分専用のスキルを作ることもできます</p>
+
+    <!-- 既存スキルの導入フロー -->
+    <div style="background:var(--white);border:1.5px solid #c4dff0;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        既存スキルを使う
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;justify-content:center;">
+        <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 3px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          探す
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" style="flex-shrink:0;"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 3px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          追加
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" style="flex-shrink:0;"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 3px;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          完了！
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--sub2);text-align:center;margin-top:6px;">
+        サイドバー「スキル」から探すか、会話中に <strong style="color:var(--blue);">/スキル名</strong> で呼び出し
+      </div>
+    </div>
+
+    <!-- オリジナルスキルの作り方 -->
+    <div style="background:var(--white);border:1.5px solid #c4dff0;border-radius:10px;padding:16px 20px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        オリジナルを作る
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bl);border-radius:8px;padding:10px 14px;">
+          <div style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;">1</div>
+          <div style="font-size:12px;color:var(--text);"><strong>「〇〇するスキルを作って」</strong>と頼む</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bl);border-radius:8px;padding:10px 14px;">
+          <div style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;">2</div>
+          <div style="font-size:12px;color:var(--text);">Claudeが<strong>自動でスキルファイルを生成</strong></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bl);border-radius:8px;padding:10px 14px;">
+          <div style="width:26px;height:26px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;">3</div>
+          <div style="font-size:12px;color:var(--text);">試して<strong>「ここを変えて」と微調整</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border-radius:8px;padding:10px 18px;font-size:13px;color:var(--blue);text-align:center;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      プログラミング不要。日本語で依頼するだけでOK！
+    </div>
+  </section>
+
+  <!-- ══ O-4. プラグインとは ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">4</div>
+      <div class="sec-title">プラグインとは？</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeに「外部サービスとの連携機能」を追加する仕組みです</p>
+
+    <!-- スキル vs プラグイン -->
+    <div style="display:flex;gap:14px;margin-bottom:14px;">
+      <div style="flex:1;text-align:center;padding:20px 14px 16px;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--white);border:1.5px solid #c4dff0;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">スキル</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">Claudeの<strong style="color:var(--text);">考え方</strong>を変える</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--sub2);background:var(--white);padding:6px;border-radius:6px;">知識・ルールの追加</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:14px;font-weight:700;color:var(--sub2);">vs</div>
+      <div style="flex:1;text-align:center;padding:20px 14px 16px;background:var(--bl);border:1.5px solid var(--blue);border-radius:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6V2"/><path d="M7 2h10"/><circle cx="8" cy="12" r="1.5" fill="white"/><circle cx="16" cy="12" r="1.5" fill="white"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">プラグイン</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">Claudeの<strong style="color:var(--text);">できること</strong>を増やす</div>
+        <div style="margin-top:8px;font-size:11px;color:var(--sub2);background:var(--white);padding:6px;border-radius:6px;">外部サービス連携</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border-radius:8px;padding:10px 18px;font-size:13px;color:var(--blue);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><circle cx="12" cy="7.5" r="1.5" fill="white"/><rect x="10.5" y="10.5" width="3" height="7" rx="1.5" fill="white"/></svg>
+      スキル＝頭脳の強化 ／ プラグイン＝手足の追加
+    </div>
+  </section>
+
+  <!-- ══ O-5. プラグインの例と導入 ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">5</div>
+      <div class="sec-title">プラグインの例と導入</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">よく使われるプラグインと、導入の流れを紹介します</p>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;text-align:center;padding:16px 10px;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--white);border:1.5px solid #c4dff0;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">カレンダー</div>
+        <div style="font-size:11px;color:var(--sub2);margin-top:3px;">予定の確認・追加</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:16px 10px;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--white);border:1.5px solid #c4dff0;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">Slack</div>
+        <div style="font-size:11px;color:var(--sub2);margin-top:3px;">メッセージ検索</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:16px 10px;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--white);border:1.5px solid #c4dff0;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">Web検索</div>
+        <div style="font-size:11px;color:var(--sub2);margin-top:3px;">最新情報の取得</div>
+      </div>
+    </div>
+
+    <!-- 導入フロー -->
+    <div style="background:var(--white);border:1.5px solid #c4dff0;border-radius:10px;padding:16px 20px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        導入の流れ
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;justify-content:center;">
+        <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 3px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09"/></svg>
+          設定を開く
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" style="flex-shrink:0;"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 3px;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+          ONにする
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" style="flex-shrink:0;"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:600;color:var(--text);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="display:block;margin:0 auto 3px;"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          連携許可
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--sub2);text-align:center;margin-top:6px;">一度連携すれば、次回から自動で使えるようになる</div>
+    </div>
+  </section>
+
+  <!-- ══ O-6. まとめ ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">6</div>
+      <div class="sec-title">スキル × プラグインの活用</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">組み合わせることで、Claudeがあなた専用の万能アシスタントになります</p>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:16px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          スキルで「型」を決める
+        </div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.7;">
+          議事録の書き方を登録<br>→ 会議後に「議事録作って」だけ
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:16px;font-weight:700;color:var(--blue);">+</div>
+      <div style="flex:1;background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:16px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6V2"/><path d="M7 2h10"/></svg>
+          プラグインで「情報」を集める
+        </div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.7;">
+          Slack + カレンダーで<br>→ 会議準備を一括対応
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border:1.5px solid var(--blue);border-radius:10px;padding:16px 20px;text-align:center;">
+      <div style="font-size:15px;font-weight:700;color:var(--blue);margin-bottom:6px;">型（スキル）× 情報（プラグイン）＝ 最強の組み合わせ</div>
+      <div style="font-size:12px;color:var(--sub);">あなたの仕事の進め方をClaudeが学び、外の情報も自動で取ってくる</div>
+    </div>
+  </section>
+
+</div>
 </div>
 
 <!-- ═══ Advanced Panel ═══ -->
