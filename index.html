@@ -29,6 +29,11 @@
   .header{
     background:var(--white);text-align:center;
     padding:36px 20px 28px;border-bottom:3px solid var(--g);
+    transition:opacity .4s ease, max-height .4s ease;
+    overflow:hidden;
+  }
+  .header.hidden{
+    opacity:0;max-height:0;padding:0;border:0;
   }
   .header h1{font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;}
   .header h1 svg{vertical-align:-4px;margin-left:6px;}
@@ -207,9 +212,17 @@
   /* ── Tab Buttons ── */
   .tab-wrap{
     max-width:900px;margin:0 auto;padding:28px 20px 0;
+    min-height:calc(100vh - 100px);
+    display:flex;align-items:center;justify-content:center;
+    transition:min-height .5s ease, align-items .5s ease;
+  }
+  .tab-wrap.docked{
+    min-height:0;
+    align-items:flex-start;
   }
   .tab-btns{
-    display:flex;gap:14px;
+    display:flex;gap:14px;width:100%;
+    transition:transform .5s ease;
   }
   .tab-btn{
     flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -233,10 +246,10 @@
   }
   .tab-panel{
     display:none;
-    animation:fadeIn .3s ease;
+    animation:fadeSlideIn .4s ease;
   }
   .tab-panel.active{display:block;}
-  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes fadeSlideIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
   @media print{.sec{break-inside:avoid;box-shadow:none;}}
 </style>
@@ -244,7 +257,7 @@
 <body>
 
 <!-- ═══ Header ═══ -->
-<header class="header">
+<header class="header hidden" id="mainHeader">
   <h1>AIの基礎ガイド</h1>
 </header>
 
@@ -1217,9 +1230,14 @@ function switchTab(name){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   var panel=document.getElementById('panel-'+name);
   var btn=document.querySelector('[data-tab="'+name+'"]');
-  if(panel.classList.contains('active')){return;}
   panel.classList.add('active');
   btn.classList.add('active');
+  var wrap=document.querySelector('.tab-wrap');
+  if(!wrap.classList.contains('docked')){
+    document.getElementById('mainHeader').classList.remove('hidden');
+    wrap.classList.add('docked');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
 }
 </script>
 
