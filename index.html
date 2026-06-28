@@ -797,10 +797,92 @@
     </div>
   </section>
 
-  <!-- ══ 8. セッション ══ -->
+  <!-- ══ 8. 権限モード ══ -->
   <section class="sec">
     <div class="sec-head">
       <div class="sec-num">8</div>
+      <div class="sec-title">権限モード：Claudeの動き方を決めよう</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Claudeが作業するとき、<strong>どこまで自動で進めるか</strong>を5段階で設定できます</p>
+
+    <!-- スペクトラム＋5モード -->
+    <div style="background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <span style="font-size:12px;font-weight:700;color:var(--sub2);">慎重・安全</span>
+        <div style="flex:1;height:6px;background:linear-gradient(to right,#c4dff0,#3b9b5a,#1e5c33);border-radius:3px;margin:0 16px;"></div>
+        <span style="font-size:12px;font-weight:700;color:#1e5c33;">高速・自動</span>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
+          <div style="font-size:14px;font-weight:800;color:#a0b8cc;">1</div>
+          <div style="font-size:11px;font-weight:700;margin:4px 0 2px;">許可を確認</div>
+          <div style="font-size:10px;color:var(--sub);line-height:1.5;">すべての操作で<br>毎回確認を求める</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
+          <div style="font-size:14px;font-weight:800;color:#7ab3d4;">2</div>
+          <div style="font-size:11px;font-weight:700;margin:4px 0 2px;">編集を承認</div>
+          <div style="font-size:10px;color:var(--sub);line-height:1.5;">読み取りは自動<br>変更だけ確認</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--ol);border-radius:8px;padding:12px 6px;border:1.5px solid var(--orange);">
+          <div style="font-size:14px;font-weight:800;color:var(--orange);">3</div>
+          <div style="font-size:11px;font-weight:700;margin:4px 0 2px;color:var(--orange);">プランモード</div>
+          <div style="font-size:10px;color:var(--sub);line-height:1.5;">先に計画を立て<br>承認後に実行</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:2px solid var(--g);">
+          <div style="font-size:14px;font-weight:800;color:var(--g2);">4</div>
+          <div style="font-size:11px;font-weight:700;margin:4px 0 2px;color:var(--g2);">自動モード</div>
+          <div style="font-size:10px;color:var(--sub);line-height:1.5;">ほとんど自動<br>危険な操作だけ確認</div>
+        </div>
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
+          <div style="font-size:14px;font-weight:800;color:var(--sub2);">5</div>
+          <div style="font-size:11px;font-weight:700;margin:4px 0 2px;">バイパス</div>
+          <div style="font-size:10px;color:var(--sub);line-height:1.5;">全操作を確認なし<br>で自動実行</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- おすすめ: 自動モード -->
+    <div style="background:var(--gl2);border:2px solid var(--g);border-radius:10px;padding:18px 20px;margin-bottom:12px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+        <div style="font-size:16px;font-weight:700;color:var(--g2);">基本は「自動モード」でOK！</div>
+      </div>
+      <div style="font-size:13px;color:var(--sub);line-height:1.8;">
+        自動モードでは、Claudeがファイルの読み取り・検索・編集を<strong>スムーズに自動で進めます。</strong><br>
+        ファイルの削除や上書きなど<strong>取り消しが難しい操作だけ確認を求める</strong>ので、安全性と効率のバランスが最も良いモードです。<br>
+        <span style="color:var(--text);font-weight:600;">迷ったらまずは自動モードを選びましょう。</span>
+      </div>
+    </div>
+
+    <!-- おすすめ: プランモード（制作向け） -->
+    <div style="background:var(--ol);border:2px solid #e8d4b0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div style="font-size:16px;font-weight:700;color:#7a5a1f;">制作物を作るなら「プランモード」がベスト</div>
+      </div>
+      <div style="font-size:13px;color:var(--sub);line-height:1.8;">
+        Chrome拡張機能・Webサイト・アプリなど<strong>まとまった成果物を作る</strong>ときは、プランモードが最も良い結果を出せます。<br>
+        Claudeが最初に<strong>「何をどの順番で作るか」という設計図</strong>を提示 → あなたが確認・修正 → 承認後に作業開始。<br>
+        方向性を事前に合わせられるので<strong>手戻りが大幅に減り</strong>、完成度の高い成果物に仕上がります。
+      </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="warn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L9 9H2l6 4.5L5.5 22 12 17l6.5 5-2.5-8.5L22 9h-7z"/></svg>
+      「バイパス」はすべての確認をスキップするため、誤操作のリスクがあります。慣れないうちは避けましょう
+    </div>
+
+    <div class="tip">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg>
+      日常の作業は自動モード、大きな制作物はプランモードと使い分けよう！
+    </div>
+  </section>
+
+  <!-- ══ 9. セッション ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">9</div>
       <div class="sec-title">セッションの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">会話の「まとまり」をセッションとして管理できます</p>
@@ -826,10 +908,10 @@
     <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M5 9V7a1 1 0 011-1h3l2 2h7a1 1 0 011 1v7a1 1 0 01-1 1H6a1 1 0 01-1-1z" fill="white"/></svg> プロジェクトやテーマごとに分けると、整理しやすくなります！</div>
   </section>
 
-  <!-- ══ 9. コンテキスト ══ -->
+  <!-- ══ 10. コンテキスト ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">9</div>
+      <div class="sec-num">10</div>
       <div class="sec-title">コンテキストとは？</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIとの会話はすべて「コンテキスト」として蓄積されます。あなたが伝えた情報が多いほど、AIはより正確に応えられます</p>
@@ -925,10 +1007,10 @@
     </div>
   </section>
 
-  <!-- ══ 10. コマンド ══ -->
+  <!-- ══ 11. コマンド ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">10</div>
+      <div class="sec-num">11</div>
       <div class="sec-title">スラッシュコマンドの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Codeモードで使える便利なコマンドです</p>
@@ -980,10 +1062,10 @@
     </div>
   </section>
 
-  <!-- ══ 11. 学び続ける ══ -->
+  <!-- ══ 12. 学び続ける ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">11</div>
+      <div class="sec-num">12</div>
       <div class="sec-title">AIはアプデが多い！自分で探しに行く習慣を</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">AIの世界は日々進化しています</p>
