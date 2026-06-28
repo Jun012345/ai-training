@@ -204,6 +204,42 @@
   /* ── Sub heading ── */
   .sh{font-size:13px;font-weight:700;color:var(--text);margin:12px 0 8px;}
 
+  /* ── Accordion ── */
+  .accordion{
+    max-width:900px;margin:20px auto 0;padding:0 20px;
+  }
+  .accordion details{
+    background:var(--white);border-radius:var(--r);
+    border:1.5px solid var(--border);box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .accordion summary{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    padding:22px 32px;cursor:pointer;
+    font-size:20px;font-weight:800;color:var(--text);
+    list-style:none;user-select:none;
+    background:var(--white);
+    transition:background .2s;
+  }
+  .accordion summary:hover{background:var(--gl2);}
+  .accordion summary::-webkit-details-marker{display:none;}
+  .accordion summary::before{display:none;}
+  .accordion .arrow{
+    width:28px;height:28px;border-radius:50%;
+    background:var(--g);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .3s;flex-shrink:0;
+  }
+  .accordion details[open] .arrow{transform:rotate(180deg);}
+  .accordion .acc-body{
+    border-top:1.5px solid var(--border);
+    animation:slideDown .3s ease;
+  }
+  @keyframes slideDown{
+    from{opacity:0;max-height:0;}
+    to{opacity:1;max-height:9999px;}
+  }
+
   @media print{.sec{break-inside:avoid;box-shadow:none;}}
 </style>
 </head>
@@ -214,7 +250,15 @@
   <h1>AIの基礎ガイド</h1>
 </header>
 
-<div class="grid">
+<div class="accordion">
+  <details>
+    <summary>
+      <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
+      ベーシック
+    </summary>
+    <div class="acc-body">
+
+<div class="grid" style="padding-top:0;">
 
   <!-- ══ 1. AIで何ができる ══ -->
   <section class="sec">
@@ -767,12 +811,16 @@
 </div>
 
 <!-- ═══ Footer Banner ═══ -->
-<div class="footer-banner">
+<div class="footer-banner" style="padding:0 20px 20px;">
   <div class="footer-inner">
     <p>AIは「使う人の思考を拡張するパートナー」です。</p>
     <p>まずは使ってみることから始めましょう！</p>
   </div>
 </div>
+
+    </div><!-- /acc-body -->
+  </details>
+</div><!-- /accordion -->
 
 <footer class="footer">AI活用 基礎研修資料 ― 2026年6月作成</footer>
 
