@@ -204,45 +204,37 @@
   /* ── Sub heading ── */
   .sh{font-size:13px;font-weight:700;color:var(--text);margin:12px 0 8px;}
 
-  /* ── Accordion ── */
-  .acc-group{
+  /* ── Tab Buttons ── */
+  .tab-wrap{
     max-width:900px;margin:20px auto 0;padding:0 20px;
-    display:flex;flex-direction:column;gap:12px;
   }
-  .accordion details{
-    background:var(--white);border-radius:var(--r);
-    border:1.5px solid var(--border);box-shadow:var(--shadow);
-    overflow:hidden;
+  .tab-btns{
+    display:flex;gap:12px;
   }
-  .accordion summary{
-    display:flex;align-items:center;justify-content:center;gap:12px;
-    padding:22px 32px;cursor:pointer;
-    font-size:20px;font-weight:800;color:var(--text);
-    list-style:none;user-select:none;
-    background:var(--white);
-    transition:background .2s;
+  .tab-btn{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:20px 16px;cursor:pointer;
+    font-size:18px;font-weight:800;color:var(--text);
+    background:var(--white);border:1.5px solid var(--border);
+    border-radius:var(--r);box-shadow:var(--shadow);
+    user-select:none;transition:all .2s;
   }
-  .accordion summary:hover{background:var(--gl2);}
-  .accordion summary::-webkit-details-marker{display:none;}
-  .accordion summary::before{display:none;}
-  .accordion .arrow{
-    width:28px;height:28px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    transition:transform .3s;flex-shrink:0;
+  .tab-btn:hover{background:var(--gl2);}
+  .tab-btn.active{border-color:var(--g);background:var(--gl2);box-shadow:0 2px 12px rgba(59,155,90,.15);}
+  .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);}
+  .tab-btn[data-tab="advanced"].active{border-color:var(--purple);background:var(--pl);}
+  .tab-btn .dot{
+    width:10px;height:10px;border-radius:50%;flex-shrink:0;
   }
-  .accordion details[open] .arrow{transform:rotate(180deg);}
-  .accordion .acc-body{
-    border-top:1.5px solid var(--border);
-    animation:slideDown .3s ease;
+  .tab-btn .badge{
+    font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;
   }
-  .accordion .acc-badge{
-    font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;
-    margin-left:4px;
+  .tab-panel{
+    display:none;
+    animation:fadeIn .3s ease;
   }
-  @keyframes slideDown{
-    from{opacity:0;max-height:0;}
-    to{opacity:1;max-height:9999px;}
-  }
+  .tab-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
   @media print{.sec{break-inside:avoid;box-shadow:none;}}
 </style>
@@ -254,17 +246,28 @@
   <h1>AIの基礎ガイド</h1>
 </header>
 
-<div class="acc-group">
-
-  <div class="accordion">
-  <details>
-    <summary>
-      <span class="arrow" style="background:var(--g);color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
+<div class="tab-wrap">
+  <div class="tab-btns">
+    <button class="tab-btn" data-tab="basic" onclick="switchTab('basic')">
+      <span class="dot" style="background:var(--g);"></span>
       ベーシック
-    </summary>
-    <div class="acc-body">
+    </button>
+    <button class="tab-btn" data-tab="optional" onclick="switchTab('optional')">
+      <span class="dot" style="background:var(--blue);"></span>
+      オプショナル
+      <span class="badge" style="background:var(--bl);color:var(--blue);">準備中</span>
+    </button>
+    <button class="tab-btn" data-tab="advanced" onclick="switchTab('advanced')">
+      <span class="dot" style="background:var(--purple);"></span>
+      アドバンス
+      <span class="badge" style="background:var(--pl);color:var(--purple);">準備中</span>
+    </button>
+  </div>
+</div>
 
-<div class="grid" style="padding-top:0;">
+<!-- ═══ Basic Panel ═══ -->
+<div class="tab-panel" id="panel-basic">
+<div class="grid">
 
   <!-- ══ 1. AIで何ができる ══ -->
   <section class="sec">
@@ -824,47 +827,43 @@
   </div>
 </div>
 
-    </div><!-- /acc-body -->
-  </details>
-  </div><!-- /accordion basic -->
+</div><!-- /panel-basic -->
 
-  <div class="accordion">
-  <details>
-    <summary>
-      <span class="arrow" style="background:var(--blue);color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-      オプショナル
-      <span class="acc-badge" style="background:var(--bl);color:var(--blue);">準備中</span>
-    </summary>
-    <div class="acc-body">
-      <div style="padding:40px 32px;text-align:center;color:var(--sub);">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="display:block;margin:0 auto 12px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
-        <div style="font-size:13px;">応用テクニックや便利な使い方を追加予定です</div>
-      </div>
+<!-- ═══ Optional Panel ═══ -->
+<div class="tab-panel" id="panel-optional">
+  <div style="max-width:900px;margin:0 auto;padding:40px 20px;">
+    <div style="background:var(--white);border-radius:var(--r);border:1.5px solid var(--border);box-shadow:var(--shadow);padding:48px 32px;text-align:center;color:var(--sub);">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="display:block;margin:0 auto 14px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
+      <div style="font-size:14px;">応用テクニックや便利な使い方を追加予定です</div>
     </div>
-  </details>
-  </div><!-- /accordion optional -->
+  </div>
+</div>
 
-  <div class="accordion">
-  <details>
-    <summary>
-      <span class="arrow" style="background:var(--purple);color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-      アドバンス
-      <span class="acc-badge" style="background:var(--pl);color:var(--purple);">準備中</span>
-    </summary>
-    <div class="acc-body">
-      <div style="padding:40px 32px;text-align:center;color:var(--sub);">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" style="display:block;margin:0 auto 12px;"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
-        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
-        <div style="font-size:13px;">上級者向けの活用法を追加予定です</div>
-      </div>
+<!-- ═══ Advanced Panel ═══ -->
+<div class="tab-panel" id="panel-advanced">
+  <div style="max-width:900px;margin:0 auto;padding:40px 20px;">
+    <div style="background:var(--white);border-radius:var(--r);border:1.5px solid var(--border);box-shadow:var(--shadow);padding:48px 32px;text-align:center;color:var(--sub);">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" style="display:block;margin:0 auto 14px;"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
+      <div style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
+      <div style="font-size:14px;">上級者向けの活用法を追加予定です</div>
     </div>
-  </details>
-  </div><!-- /accordion advanced -->
-
-</div><!-- /acc-group -->
+  </div>
+</div>
 
 <footer class="footer">AI活用 基礎研修資料 ― 2026年6月作成</footer>
+
+<script>
+function switchTab(name){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  var panel=document.getElementById('panel-'+name);
+  var btn=document.querySelector('[data-tab="'+name+'"]');
+  if(panel.classList.contains('active')){return;}
+  panel.classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>
