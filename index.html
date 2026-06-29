@@ -9,7 +9,7 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{
     --g:#3b9b5a;--g2:#2d7a46;--gl:#e8f5ec;--gl2:#f0f9f3;
-    --bg:#f4f7f5;--white:#fff;--text:#1a2e23;--sub:#4a6355;--sub2:#6b8a78;
+    --bg:#f4f7f5;--white:#fff;--text:#1a2e23;--sub:#4a6355;--sub2:#527060;
     --border:#d4e0d8;--border2:#c0d4c8;
     --orange:#e67e22;--ol:#fef3e2;
     --blue:#3498db;--bl:#e8f4fd;
@@ -206,6 +206,10 @@
     display:flex;align-items:center;justify-content:center;gap:6px;
   }
 
+  /* ── TOC item hover ── */
+  .toc-item{transition:background .15s, transform .15s;}
+  .toc-item:hover{transform:translateX(6px);filter:brightness(.96);}
+
   /* ── Sub heading ── */
   .sh{font-size:13px;font-weight:700;color:var(--text);margin:12px 0 8px;}
 
@@ -269,6 +273,25 @@
   .tab-panel.active{display:block;}
   @keyframes fadeSlideIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
+  .toc-item:focus-visible{outline:2px solid var(--g);outline-offset:2px;}
+  .tab-btn:focus-visible{outline:2px solid var(--g);outline-offset:2px;}
+  .tab-btn[aria-selected="true"]{font-weight:800;}
+
+  @media(max-width:640px){
+    .tab-btns{flex-wrap:wrap;gap:8px;}
+    .tab-btn{padding:14px 10px 12px;font-size:14px;gap:6px;}
+    .tab-btn .dot{width:36px;height:36px;}
+    .tab-btn .dot svg{width:18px;height:18px;}
+    .icon-row,.out-row{flex-wrap:wrap;}
+    .icon-item,.out-item{min-width:calc(50% - 8px);}
+    .ex-pair{flex-direction:column;}
+    .ses-row,.ctx-row,.learn-row{flex-direction:column;align-items:stretch;}
+    .ses-box,.ctx-box{max-width:100%;}
+    .logo-pair{flex-direction:column;}
+    .landing-title{font-size:26px;}
+    .landing-sub{font-size:14px;}
+    .sec{padding:20px 16px;}
+  }
   @media print{.sec{break-inside:avoid;box-shadow:none;}}
 </style>
 </head>
@@ -285,7 +308,7 @@
     <div class="landing-sub">仕事が変わる。まずは基礎から。</div>
     <div class="landing-chips">
       <span class="landing-chip" style="background:var(--ol);color:#b35a00;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         概要を知る
       </span>
       <span class="landing-chip" style="background:var(--gl);color:var(--g2);">
@@ -297,25 +320,25 @@
         応用する
       </span>
       <span class="landing-chip" style="background:var(--rl);color:var(--red);">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><rect x="9" y="9" width="6" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12.5" r="1" fill="currentColor" stroke="none"/><path d="M10 9V7a2 2 0 014 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
         安全に使う
       </span>
     </div>
   </div>
-  <div class="tab-btns">
-    <button class="tab-btn" data-tab="overview" onclick="switchTab('overview')">
+  <div class="tab-btns" role="tablist">
+    <button class="tab-btn" data-tab="overview" role="tab" aria-selected="false" aria-controls="panel-overview" onclick="switchTab('overview')">
       <span class="dot" style="background:var(--ol);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
       概要
     </button>
-    <button class="tab-btn" data-tab="basic" onclick="switchTab('basic')">
+    <button class="tab-btn" data-tab="basic" role="tab" aria-selected="false" aria-controls="panel-basic" onclick="switchTab('basic')">
       <span class="dot" style="background:var(--gl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
       ベーシック
     </button>
-    <button class="tab-btn" data-tab="optional" onclick="switchTab('optional')">
+    <button class="tab-btn" data-tab="optional" role="tab" aria-selected="false" aria-controls="panel-optional" onclick="switchTab('optional')">
       <span class="dot" style="background:var(--bl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
       オプショナル
     </button>
-    <button class="tab-btn" data-tab="advanced" onclick="switchTab('advanced')">
+    <button class="tab-btn" data-tab="advanced" role="tab" aria-selected="false" aria-controls="panel-advanced" onclick="switchTab('advanced')">
       <span class="dot" style="background:var(--rl);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="var(--red)" opacity=".12"/><rect x="9" y="9" width="6" height="7" rx="1" fill="none" stroke="var(--red)" stroke-width="1.5"/><circle cx="12" cy="12.5" r="1" fill="var(--red)" stroke="none"/><path d="M10 9V7a2 2 0 014 0v2" stroke="var(--red)" stroke-width="1.5"/></svg></span>
       セキュリティ
     </button>
@@ -326,14 +349,71 @@
 <div class="tab-panel" id="panel-overview">
 <div class="grid">
 
-  <section class="sec" style="border-color:#e8d4b0;">
+  <section class="sec">
     <div class="sec-head">
-      <div class="sec-num" style="background:var(--orange);">1</div>
+      <div class="sec-num">1</div>
+      <div class="sec-title">この研修の内容</div>
+    </div>
+    <p style="font-size:13px;color:#666;margin:-4px 0 12px;">タップすると該当セクションに移動します</p>
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div style="width:22px;height:22px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <span style="font-size:14px;font-weight:700;color:var(--g2);">ベーシック</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:18px;">
+      <div class="toc-item" onclick="goToSection('basic',0)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">1.</span>Claudeの3つのモード</div>
+      <div class="toc-item" onclick="goToSection('basic',1)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">2.</span>AIでできること</div>
+      <div class="toc-item" onclick="goToSection('basic',2)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">3.</span>Claude vs ChatGPT</div>
+      <div class="toc-item" onclick="goToSection('basic',3)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">4.</span>Claudeの操作方法</div>
+      <div class="toc-item" onclick="goToSection('basic',4)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">5.</span>ファイル・画像の渡し方</div>
+      <div class="toc-item" onclick="goToSection('basic',5)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">6.</span>モデルの選び方・利用制限</div>
+      <div class="toc-item" onclick="goToSection('basic',7)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">7.</span>プロンプトの書き方</div>
+      <div class="toc-item" onclick="goToSection('basic',9)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">8.</span>権限モード・セッション</div>
+      <div class="toc-item" onclick="goToSection('basic',11)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">9.</span>コンテキスト管理</div>
+      <div class="toc-item" onclick="goToSection('basic',12)" style="padding:6px 12px;border-radius:6px;background:var(--gl2);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--g2);font-weight:700;margin-right:6px;">10.</span>スラッシュコマンド</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div style="width:22px;height:22px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <span style="font-size:14px;font-weight:700;color:var(--blue);">オプショナル</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:18px;">
+      <div class="toc-item" onclick="goToSection('optional',0)" style="padding:6px 12px;border-radius:6px;background:var(--bl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--blue);font-weight:700;margin-right:6px;">1.</span>カスタマイズの概要</div>
+      <div class="toc-item" onclick="goToSection('optional',1)" style="padding:6px 12px;border-radius:6px;background:var(--bl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--blue);font-weight:700;margin-right:6px;">2.</span>スキルの使い方・作り方</div>
+      <div class="toc-item" onclick="goToSection('optional',4)" style="padding:6px 12px;border-radius:6px;background:var(--bl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--blue);font-weight:700;margin-right:6px;">3.</span>SKILL.md / CLAUDE.md</div>
+      <div class="toc-item" onclick="goToSection('optional',6)" style="padding:6px 12px;border-radius:6px;background:var(--bl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--blue);font-weight:700;margin-right:6px;">4.</span>プラグインとコネクタ</div>
+      <div class="toc-item" onclick="goToSection('optional',9)" style="padding:6px 12px;border-radius:6px;background:var(--bl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--blue);font-weight:700;margin-right:6px;">5.</span>メモリ機能</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div style="width:22px;height:22px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><rect x="9" y="9" width="6" height="7" rx="1" fill="none" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12.5" r="1" fill="white" stroke="none"/><path d="M10 9V7a2 2 0 014 0v2" stroke="white" stroke-width="1.5"/></svg></div>
+      <span style="font-size:14px;font-weight:700;color:var(--red);">セキュリティ</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <div class="toc-item" onclick="goToSection('advanced',0)" style="padding:6px 12px;border-radius:6px;background:var(--rl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--red);font-weight:700;margin-right:6px;">1.</span>入れていい情報・ダメな情報</div>
+      <div class="toc-item" onclick="goToSection('advanced',1)" style="padding:6px 12px;border-radius:6px;background:var(--rl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--red);font-weight:700;margin-right:6px;">2.</span>ハルシネーション対策</div>
+      <div class="toc-item" onclick="goToSection('advanced',2)" style="padding:6px 12px;border-radius:6px;background:var(--rl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--red);font-weight:700;margin-right:6px;">3.</span>業務利用の5つのルール</div>
+      <div class="toc-item" onclick="goToSection('advanced',3)" style="padding:6px 12px;border-radius:6px;background:var(--rl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--red);font-weight:700;margin-right:6px;">4.</span>スクリーンショットの映り込み</div>
+      <div class="toc-item" onclick="goToSection('advanced',4)" style="padding:6px 12px;border-radius:6px;background:var(--rl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--red);font-weight:700;margin-right:6px;">5.</span>AIが出したURLに注意</div>
+      <div class="toc-item" onclick="goToSection('advanced',5)" style="padding:6px 12px;border-radius:6px;background:var(--rl);font-size:12px;color:var(--text);cursor:pointer;"><span style="color:var(--red);font-weight:700;margin-right:6px;">6.</span>非公式AI・無料ツールに注意</div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ═══ Basic Panel ═══ -->
+<div class="tab-panel" id="panel-basic">
+<div class="grid">
+
+  <!-- ══ 0. Claudeの3つのモード（概要から移動） ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
       <div class="sec-title">Claudeの3つのモード</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeデスクトップアプリには3つのモードがあり、それぞれできることが異なります</p>
 
-    <!-- 3モードのカード -->
     <div style="display:flex;gap:14px;margin-bottom:14px;">
       <div style="flex:1;text-align:center;padding:20px 14px 16px;background:var(--ol);border:1.5px solid #e8d4b0;border-radius:10px;">
         <div style="width:44px;height:44px;border-radius:50%;background:var(--white);border:1.5px solid #e8d4b0;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
@@ -361,8 +441,7 @@
       </div>
     </div>
 
-    <!-- できること比較表 -->
-    <div style="background:var(--white);border:1.5px solid #e8d4b0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px;">
       <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;">モードごとの「できること」比較</div>
       <div style="display:flex;flex-direction:column;gap:0;">
         <div style="display:flex;align-items:center;padding:10px 12px;border-bottom:2px solid var(--border);font-size:12px;font-weight:700;color:var(--sub);">
@@ -410,24 +489,16 @@
       </div>
     </div>
 
-    <!-- 結論 -->
     <div style="background:var(--ol);border:2px solid var(--orange);border-radius:10px;padding:16px 20px;text-align:center;">
       <div style="font-size:15px;font-weight:700;color:#c46a1d;margin-bottom:6px;">迷ったら「Code」モードを選べばOK！</div>
       <div style="font-size:12px;color:var(--sub);">ChatやCoworkの機能をすべて含み、さらにPCのファイル操作やコマンド実行もできる万能モード</div>
     </div>
   </section>
 
-</div>
-</div>
-
-<!-- ═══ Basic Panel ═══ -->
-<div class="tab-panel" id="panel-basic">
-<div class="grid">
-
-  <!-- ══ 1. AIで何ができる ══ -->
+  <!-- ══ 2. AIで何ができる ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">1</div>
+      <div class="sec-num">2</div>
       <div class="sec-title">AIを使うと、仕事の質がこんなにも上がる！</div>
     </div>
     <div class="icon-row">
@@ -466,7 +537,7 @@
   <!-- ══ 2. 主流AI ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">2</div>
+      <div class="sec-num">3</div>
       <div class="sec-title">主流AIは <span style="color:#e07a2f;font-weight:800;">Claude</span> と <span style="color:#4a90d9;font-weight:800;">ChatGPT</span></div>
     </div>
     <div style="display:flex;gap:24px;align-items:flex-start;">
@@ -504,7 +575,7 @@
   <!-- ══ 3. Claudeの使い方 ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">3</div>
+      <div class="sec-num">4</div>
       <div class="sec-title"><span style="color:#e07a2f;">Claude</span>（デスクトップ版）の使い方</div>
     </div>
 
@@ -608,7 +679,7 @@
   <!-- ══ 4. ファイルの渡し方 ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">4</div>
+      <div class="sec-num">5</div>
       <div class="sec-title">ファイル・画像の渡し方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeは文章だけでなく、<strong>ファイルや画像を読み取る</strong>ことができます</p>
@@ -627,7 +698,7 @@
       <div style="flex:1;background:var(--gl2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5" style="display:block;margin:0 auto 6px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">PDF</div>
-        <div style="font-size:11px;color:var(--sub);line-height:1.5;">テキスト＋図表<br>両方を読み取り可能<br>（100ページ以下推奨）</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">100ページ未満は<br>図表も分析可能<br>1000ページ超はテキストのみ</div>
       </div>
     </div>
 
@@ -653,7 +724,7 @@
     </div>
 
     <div style="font-size:12px;color:var(--sub);background:var(--gl2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;line-height:1.7;">
-      <strong style="color:var(--text);">制限：</strong>1ファイル最大<strong style="color:var(--g2);">30MB</strong>、一度に<strong style="color:var(--g2);">最大20ファイル</strong>まで添付可能。Word等の文書は<strong style="color:var(--text);">テキストのみ抽出</strong>（埋め込み画像は読めません）
+      <strong style="color:var(--text);">制限：</strong>チャット添付は1ファイル最大<strong style="color:var(--g2);">500MB</strong>・<strong style="color:var(--g2);">最大20ファイル</strong>。Projects（プロジェクト）への追加は1ファイル<strong style="color:var(--g2);">30MB</strong>まで。Word等の文書は<strong style="color:var(--text);">テキストのみ抽出</strong>（埋め込み画像は読めません）
     </div>
 
     <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg> 「このExcel分析して」「この画像の文字読んで」— ファイルを渡すだけでOK！</div>
@@ -662,7 +733,7 @@
   <!-- ══ 5. モデルの違い ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">5</div>
+      <div class="sec-num">6</div>
       <div class="sec-title">モデルの違い：得意・不得意を知ろう</div>
     </div>
     <table class="mtable">
@@ -691,7 +762,7 @@
   <!-- ══ 6. 利用制限 ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">6</div>
+      <div class="sec-num">7</div>
       <div class="sec-title">利用制限を知っておこう</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Claudeの利用上限は<strong>トークン</strong>（処理量）で計算され、<strong>5時間ごと</strong>と<strong>週単位</strong>でリセットされます</p>
@@ -837,7 +908,7 @@
   <!-- ══ 7. プロンプト ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">7</div>
+      <div class="sec-num">8</div>
       <div class="sec-title">プロンプト（指示）の書き方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">良いプロンプト ＝ <strong>具体的</strong>で、<strong>わかりやすく</strong>、<strong>目的を明確に</strong></p>
@@ -872,7 +943,7 @@
   <!-- ══ 8. 思考レベル ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">8</div>
+      <div class="sec-num">9</div>
       <div class="sec-title">モデルの種類と思考レベル</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">同じAIでも「どのモデルで動かすか」で、速さ・賢さ・コストが変わります</p>
@@ -918,30 +989,36 @@
     <!-- 出力レベル（小→MAX） -->
     <div style="margin-bottom:14px;">
       <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">さらに「思考レベル」でも調整できる</div>
-      <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">同じモデルでも、どれだけ深く考えさせるかを4段階で設定できます</p>
-      <div style="display:flex;gap:8px;">
-        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
-          <div style="font-size:20px;font-weight:800;color:#8dd4a0;">小<span style="font-size:10px;font-weight:600;color:var(--sub2);"> (low)</span></div>
+      <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">同じモデルでも、どれだけ深く考えさせるかを5段階で設定できます</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 4px;border:1px solid var(--border);">
+          <div style="font-size:18px;font-weight:800;color:#8dd4a0;">小<span style="font-size:9px;font-weight:600;color:var(--sub2);"> (low)</span></div>
           <div style="font-size:10px;color:var(--sub2);margin-top:2px;">サクッと即答</div>
           <div style="font-size:10px;color:var(--sub);margin-top:3px;">YES/NO確認<br>簡単な質問</div>
           <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">深い考察は苦手</div>
         </div>
-        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
-          <div style="font-size:20px;font-weight:800;color:#5db876;">中<span style="font-size:10px;font-weight:600;color:var(--sub2);"> (medium)</span></div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 4px;border:1px solid var(--border);">
+          <div style="font-size:18px;font-weight:800;color:#5db876;">中<span style="font-size:9px;font-weight:600;color:var(--sub2);"> (med)</span></div>
           <div style="font-size:10px;color:var(--sub2);margin-top:2px;">普段使い</div>
           <div style="font-size:10px;color:var(--sub);margin-top:3px;">メール文面<br>ちょっとした相談</div>
           <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">複雑な依頼は浅い</div>
         </div>
-        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1.5px solid var(--g);">
-          <div style="font-size:20px;font-weight:800;color:var(--g2);">高<span style="font-size:10px;font-weight:600;color:var(--sub2);"> (high)</span></div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 4px;border:1.5px solid var(--g);">
+          <div style="font-size:18px;font-weight:800;color:var(--g2);">高<span style="font-size:9px;font-weight:600;color:var(--sub2);"> (high)</span></div>
           <div style="font-size:10px;color:var(--sub2);margin-top:2px;">しっかり思考</div>
           <div style="font-size:10px;color:var(--sub);margin-top:3px;">企画書作成<br>報告書のたたき台</div>
           <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">時間・コスト増</div>
         </div>
-        <div style="flex:1;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 6px;border:1px solid var(--border);">
-          <div style="font-size:20px;font-weight:800;color:#1e5c33;">MAX<span style="font-size:10px;font-weight:600;color:var(--sub2);"> (max)</span></div>
-          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">全力で深掘り</div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 4px;border:1px solid var(--border);">
+          <div style="font-size:18px;font-weight:800;color:#1a6b35;">特高<span style="font-size:9px;font-weight:600;color:var(--sub2);"> (xhigh)</span></div>
+          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">徹底的に分析</div>
           <div style="font-size:10px;color:var(--sub);margin-top:3px;">戦略立案<br>複雑な分析</div>
+          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">Opus 4.7以降のみ</div>
+        </div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--gl2);border-radius:8px;padding:12px 4px;border:1px solid var(--border);">
+          <div style="font-size:18px;font-weight:800;color:#1e5c33;">MAX<span style="font-size:9px;font-weight:600;color:var(--sub2);"> (max)</span></div>
+          <div style="font-size:10px;color:var(--sub2);margin-top:2px;">全力で深掘り</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:3px;">最高精度の<br>重要タスク向け</div>
           <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 4px;">時間・コスト大</div>
         </div>
       </div>
@@ -949,8 +1026,8 @@
 
     <!-- 高速モード -->
     <div style="margin-bottom:14px;">
-      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">「高速モード」でOpusをスピードアップ</div>
-      <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">Opusモデル使用時に、<strong>賢さはそのまま・出力速度だけを最大2.5倍</strong>にできる設定です</p>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">「高速モード」で出力をスピードアップ</div>
+      <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">対応モデル使用時に、<strong>賢さはそのまま・出力速度だけを最大2.5倍</strong>にできる設定です</p>
 
       <div style="background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:10px;">
         <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px;">
@@ -991,7 +1068,7 @@
 
       <div style="font-size:12px;color:var(--sub);background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px 14px;display:flex;align-items:flex-start;gap:8px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        <span>対応モデルは <strong>Opusのみ</strong>（Opus 4.8 / 4.7 / 4.6）。Sonnet・Haikuでは使えません。セッション開始時からONにするのが効率的です</span>
+        <span>対応モデルは <strong>Opus</strong>（4.8 / 4.7 / 4.6）と <strong>Sonnet 4.6</strong>。Haikuでは使えません。セッション開始時からONにするのが効率的です</span>
       </div>
     </div>
 
@@ -1004,7 +1081,7 @@
   <!-- ══ 9. 権限モード ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">9</div>
+      <div class="sec-num">10</div>
       <div class="sec-title">権限モード：Claudeの動き方を決めよう</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Claudeが作業するとき、<strong>どこまで自動で進めるか</strong>を5段階で設定できます</p>
@@ -1086,7 +1163,7 @@
   <!-- ══ 10. セッション ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">10</div>
+      <div class="sec-num">11</div>
       <div class="sec-title">セッションの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">会話の「まとまり」をセッションとして管理できます</p>
@@ -1115,7 +1192,7 @@
   <!-- ══ 11. コンテキスト ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">11</div>
+      <div class="sec-num">12</div>
       <div class="sec-title">コンテキストとは？</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIとの会話はすべて「コンテキスト」として蓄積されます。あなたが伝えた情報が多いほど、AIはより正確に応えられます</p>
@@ -1154,7 +1231,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         1セッション＝コップ1杯の水
       </div>
-      <p style="font-size:13px;color:var(--sub);margin:0 0 14px;line-height:1.7;">セッション（1つの会話）で使えるコンテキストには<strong style="color:var(--text);">上限</strong>があります。<br>会話が長くなるほどコップの水が溢れていき、<strong style="color:var(--red);">AIの回答品質が落ちていきます。</strong></p>
+      <p style="font-size:13px;color:var(--sub);margin:0 0 14px;line-height:1.7;">セッション（1つの会話）で使えるコンテキストには<strong style="color:var(--text);">上限</strong>があります。<br>長い会話は自動要約されますが、使用量が多くなり<strong style="color:var(--orange);">やり取りの効率が下がる</strong>ことがあります。</p>
 
       <!-- 劣化グラデーションバー -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
@@ -1167,7 +1244,7 @@
         </div>
         <span style="font-size:11px;font-weight:600;color:var(--red);white-space:nowrap;">長い会話</span>
       </div>
-      <p style="font-size:11px;color:var(--sub2);margin:0;text-align:center;">会話が長引くほどAIの理解力・正確さが下がる → 「短く的確に」が大事！</p>
+      <p style="font-size:11px;color:var(--sub2);margin:0;text-align:center;">長い会話は自動要約が入り使用量も増える → 「短く的確に」が効率的！</p>
     </div>
 
     <!-- 効率的に使うコツ -->
@@ -1214,7 +1291,7 @@
   <!-- ══ 12. コマンド ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">12</div>
+      <div class="sec-num">13</div>
       <div class="sec-title">スラッシュコマンドの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Codeモードで使える便利なコマンドです</p>
@@ -1262,14 +1339,14 @@
 
     <div class="tip">
       <svg width="20" height="20" viewBox="0 0 24 24"><path d="M13.7 3.3a2 2 0 00-3.4 0L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3z" fill="currentColor"/><rect x="11" y="9.5" width="2" height="5" rx="1" fill="white"/><circle cx="12" cy="16.5" r="1.2" fill="white"/></svg>
-      50-60%を超えるとAIの精度が落ち始めます。早めの対処がポイント！
+      会話が長くなったら /compact で要約するか、新しいセッションを始めよう！
     </div>
   </section>
 
   <!-- ══ 13. 学び続ける ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">13</div>
+      <div class="sec-num">14</div>
       <div class="sec-title">AIはアプデが多い！自分で探しに行く習慣を</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">AIの世界は日々進化しています</p>
@@ -1811,7 +1888,7 @@
           </div>
         </div>
       </div>
-      <div style="font-size:11px;color:var(--sub2);text-align:center;margin-top:10px;">ほかにも Notion / Figma / JIRA / Vercel / Linear など 9,400以上のサービスに対応</div>
+      <div style="font-size:11px;color:var(--sub2);text-align:center;margin-top:10px;">ほかにも Notion / Figma / JIRA / Vercel / Linear など多数のサービスに対応</div>
     </div>
 
     <!-- できること -->
@@ -2023,7 +2100,7 @@
     <div style="background:var(--rl);border-radius:8px;padding:12px 18px;text-align:center;">
       <div style="font-size:13px;color:var(--red);font-weight:600;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        初期設定では入力データがAI学習に使われる可能性があります。<strong>Settings → Privacy</strong> で学習利用を<strong>OFFにしておきましょう</strong>
+        Model Improvement（モデル改善）を許可している場合、入力データが学習に使われる可能性があります。<strong>Settings → Privacy</strong> で確認し、<strong>OFFにしておきましょう</strong>
       </div>
     </div>
   </section>
@@ -2162,18 +2239,136 @@
     </div>
   </section>
 
+  <!-- ══ S-4. スクリーンショットの映り込み ══ -->
+  <section class="sec" style="border-color:#e8b4b0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--red);">4</div>
+      <div class="sec-title">スクリーンショットの映り込みに注意</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">画面キャプチャや写真をAIに送るとき、<strong style="color:var(--red);">意図しない情報が写り込んでいる</strong>ことがあります</p>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;background:#fef2f2;border:1.5px solid var(--red);border-radius:10px;padding:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          見落としがちなもの
+        </div>
+        <div style="font-size:13px;color:var(--sub);line-height:2;">
+          <strong style="color:var(--text);">通知バナー</strong>（メール本文が表示）<br>
+          <strong style="color:var(--text);">ブラウザの他タブ</strong>のタイトル<br>
+          <strong style="color:var(--text);">デスクトップ上</strong>のファイル名<br>
+          <strong style="color:var(--text);">Excelの別シート</strong>やシート名
+        </div>
+      </div>
+      <div style="flex:1;background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--g2);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          送る前にやること
+        </div>
+        <div style="font-size:13px;color:var(--sub);line-height:2;">
+          <strong style="color:var(--text);">必要な範囲だけ</strong>を切り取る<br>
+          <strong style="color:var(--text);">通知をOFF</strong>にしてからキャプチャ<br>
+          <strong style="color:var(--text);">送信前に拡大</strong>して隅まで確認<br>
+          <strong style="color:var(--text);">ファイル名</strong>にも個人情報がないか
+        </div>
+      </div>
+    </div>
+
+    <div class="tip" style="background:var(--rl);color:var(--red);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      「見えているつもりがない情報」こそ一番危険。送る前に必ず画像を確認しよう
+    </div>
+  </section>
+
+  <!-- ══ S-5. AIが出したURLは信用しない ══ -->
+  <section class="sec" style="border-color:#e8b4b0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--red);">5</div>
+      <div class="sec-title">AIが出したURLは信用しない</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIは<strong style="color:var(--red);">存在しないURLを自信たっぷりに教える</strong>ことがあります（ハルシネーションの一種）</p>
+
+    <div style="display:flex;gap:10px;margin-bottom:14px;">
+      <div style="flex:1;background:var(--white);border:1.5px solid #e8b4b0;border-radius:10px;padding:16px;text-align:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" style="display:block;margin:0 auto 8px;"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/><line x1="4" y1="4" x2="20" y2="20" stroke-width="2"/></svg>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">こんなことが起きる</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.6;">実在しないサイトのURL<br>存在しない論文の引用<br>似ているが別のサイトのURL</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1.5px solid var(--g);border-radius:10px;padding:16px;text-align:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5" style="display:block;margin:0 auto 8px;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">対処法</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.6;">URLは自分でGoogle検索して確認<br>リンクはまずアドレスを目視<br>公式サイトはブックマークから開く</div>
+      </div>
+    </div>
+
+    <div class="tip" style="background:var(--rl);color:var(--red);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      AIが「このサイトを見てください」と言っても、まず自分の目でURLを確認しよう
+    </div>
+  </section>
+
+  <!-- ══ S-6. 非公式AI・無料ツールに注意 ══ -->
+  <section class="sec" style="border-color:#e8b4b0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--red);">6</div>
+      <div class="sec-title">非公式AI・無料ツールに注意</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">「<strong style="color:var(--red);">無料でAI使い放題</strong>」を謳うサービスには、入力した情報を抜き取る目的のものがあります</p>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;background:#fef2f2;border:1.5px solid var(--red);border-radius:10px;padding:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          使ってはいけないもの
+        </div>
+        <div style="font-size:13px;color:var(--sub);line-height:2;">
+          <strong style="color:var(--text);">「無料GPT」系</strong>のWebサイト<br>
+          <strong style="color:var(--text);">出所不明</strong>のAIアプリ<br>
+          <strong style="color:var(--text);">非公式</strong>のブラウザ拡張機能
+        </div>
+      </div>
+      <div style="flex:1;background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--g2);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          安全なもの
+        </div>
+        <div style="font-size:13px;color:var(--sub);line-height:2;">
+          <strong style="color:var(--text);">Claude</strong>（Anthropic公式）<br>
+          <strong style="color:var(--text);">ChatGPT</strong>（OpenAI公式）<br>
+          <strong style="color:var(--text);">会社が契約</strong>したAIサービス
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:16px 20px;text-align:center;">
+      <div style="font-size:15px;font-weight:700;color:var(--g2);margin-bottom:6px;">業務では公式ツールだけを使おう</div>
+      <div style="font-size:12px;color:var(--sub);">迷ったら上司に確認。便利そうでも知らないサービスに情報を入力しない</div>
+    </div>
+  </section>
+
 </div>
 </div>
 
 
 <script>
+function goToSection(tab,idx){
+  switchTab(tab);
+  setTimeout(function(){
+    var p=document.getElementById('panel-'+tab);
+    if(!p) return;
+    var secs=p.querySelectorAll('.sec');
+    if(secs[idx]) secs[idx].scrollIntoView({behavior:'smooth',block:'start'});
+  },50);
+}
 function switchTab(name){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   var panel=document.getElementById('panel-'+name);
   var btn=document.querySelector('[data-tab="'+name+'"]');
+  if(!panel||!btn) return;
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false');});
   panel.classList.add('active');
   btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
   var wrap=document.querySelector('.tab-wrap');
   if(!wrap.classList.contains('docked')){
     document.getElementById('mainHeader').classList.remove('hidden');
@@ -2181,6 +2376,12 @@ function switchTab(name){
     window.scrollTo({top:0,behavior:'smooth'});
   }
 }
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.toc-item').forEach(function(el){el.setAttribute('tabindex','0');el.setAttribute('role','button');});
+  document.addEventListener('keydown',function(e){
+    if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('toc-item')){e.preventDefault();e.target.click();}
+  });
+});
 </script>
 
 </body>
