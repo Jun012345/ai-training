@@ -791,9 +791,57 @@
       </div>
     </div>
 
+    <!-- 高速モード -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">「高速モード」でOpusをスピードアップ</div>
+      <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">Opusモデル使用時に、<strong>賢さはそのまま・出力速度だけを最大2.5倍</strong>にできる設定です</p>
+
+      <div style="background:var(--gl2);border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:10px;">
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px;">
+          <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:14px 10px;border:1px solid var(--border);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e5c33" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
+            <div style="font-size:13px;font-weight:700;margin:6px 0 2px;">Opus（通常）</div>
+            <div style="font-size:11px;color:var(--sub);">最高精度<br>出力はゆっくり</div>
+          </div>
+          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="var(--g)" stroke-width="2"><path d="M4 12h24"/><path d="M22 5l7 7-7 7"/></svg>
+          <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:14px 10px;border:2px solid var(--g);">
+            <div style="position:relative;display:inline-block;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--g)" stroke="none" style="position:absolute;top:-6px;right:-10px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div style="font-size:13px;font-weight:700;margin:6px 0 2px;color:var(--g2);">Opus（高速モード）</div>
+            <div style="font-size:11px;color:var(--g);font-weight:600;">同じ精度で最大2.5倍速</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;background:var(--white);border-radius:6px;padding:10px;border:1px solid var(--border);text-align:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2" style="margin-bottom:3px;"><path d="M20 6L9 17l-5-5"/></svg>
+            <div style="font-size:11px;font-weight:600;color:var(--g2);margin-bottom:2px;">賢さは同じ</div>
+            <div style="font-size:10px;color:var(--sub);line-height:1.4;">小さいモデルに<br>切り替わるのではなく<br>同じOpusのまま</div>
+          </div>
+          <div style="flex:1;background:var(--white);border-radius:6px;padding:10px;border:1px solid var(--border);text-align:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2" style="margin-bottom:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <div style="font-size:11px;font-weight:600;color:var(--g2);margin-bottom:2px;">有効化の方法</div>
+            <div style="font-size:10px;color:var(--sub);line-height:1.4;"><strong>/fast</strong> コマンド<br>または設定画面の<br>トグルスイッチ</div>
+          </div>
+          <div style="flex:1;background:var(--white);border-radius:6px;padding:10px;border:1px solid var(--border);text-align:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" style="margin-bottom:3px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div style="font-size:11px;font-weight:600;color:var(--orange);margin-bottom:2px;">コスト注意</div>
+            <div style="font-size:10px;color:var(--sub);line-height:1.4;">追加クレジットが<br>消費される<br>（通常より高い）</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:12px;color:var(--sub);background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px 14px;display:flex;align-items:flex-start;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span>対応モデルは <strong>Opusのみ</strong>（Opus 4.8 / 4.7 / 4.6）。Sonnet・Haikuでは使えません。セッション開始時からONにするのが効率的です</span>
+      </div>
+    </div>
+
     <div class="tip">
       <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg>
-      モデル選び + 思考レベルの組み合わせで、速さとクオリティを最適化しよう！
+      モデル選び + 思考レベル + 高速モードの組み合わせで、速さとクオリティを最適化しよう！
     </div>
   </section>
 
