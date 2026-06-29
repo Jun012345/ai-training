@@ -234,7 +234,7 @@
   .tab-wrap.docked .landing-hero{
     opacity:0;max-height:0;margin:0;pointer-events:none;
   }
-  .landing-title{font-size:38px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-.5px;}
+  .landing-title{font-size:38px;font-weight:800;color:var(--text);margin:0 0 8px;letter-spacing:-.5px;}
   .landing-sub{font-size:16px;color:var(--sub);margin-bottom:28px;}
   .landing-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
   .landing-chip{
@@ -281,7 +281,7 @@
 
 <div class="tab-wrap">
   <div class="landing-hero">
-    <div class="landing-title">AIを味方につけよう</div>
+    <h2 class="landing-title">AIを味方につけよう</h2>
     <div class="landing-sub">仕事が変わる。まずは基礎から。</div>
     <div class="landing-chips">
       <span class="landing-chip" style="background:var(--ol);color:#b35a00;">
@@ -768,7 +768,7 @@
       </div>
 
       <div style="font-size:12px;color:var(--sub);background:var(--gl2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;line-height:1.7;">
-        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、すべて<strong style="color:var(--g2);">「何トークン使ったか」</strong>で決まります。<br>
+        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、主に<strong style="color:var(--g2);">「何トークン使ったか」</strong>で変わります。<br>
         <span style="color:var(--sub2);font-size:11px;">※ 実際の消費量は入力した文字数だけでなく、AIの回答の長さや思考の深さによっても変わります</span>
       </div>
 
@@ -800,7 +800,7 @@
             <div style="font-size:32px;line-height:1;margin-bottom:6px;">🚲</div>
             <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;">Haiku（自転車）</div>
             <div style="font-size:11px;color:var(--sub);">軽い用事なら</div>
-            <div style="font-size:12px;font-weight:700;color:var(--g2);">ほぼ消費ゼロ</div>
+            <div style="font-size:12px;font-weight:700;color:var(--g2);">消費が少ない</div>
           </div>
         </div>
 
@@ -903,12 +903,11 @@
           <div style="font-size:10px;color:var(--sub2);">高精度・じっくり思考</div>
           <div style="font-size:10px;color:var(--sub);margin-top:4px;">複雑な分析<br>戦略立案</div>
         </div>
-        <div style="flex:1;text-align:center;background:var(--white);border-radius:10px;padding:14px 8px;border:1.5px solid #8b5cf6;position:relative;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
-          <div style="font-size:14px;font-weight:700;margin:6px 0 2px;color:#8b5cf6;">Fable 5</div>
-          <div style="font-size:10px;color:var(--sub2);">最上位・最新モデル</div>
-          <div style="font-size:10px;color:var(--sub);margin-top:4px;">最高品質の出力<br>専門的な文書</div>
-          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 6px;">⚠ 現在利用停止中</div>
+        <div style="flex:1;text-align:center;background:#f5f5f5;border-radius:10px;padding:14px 8px;border:1.5px dashed #bbb;opacity:.65;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+          <div style="font-size:14px;font-weight:700;margin:6px 0 2px;color:#999;">Fable 5</div>
+          <div style="font-size:10px;color:#aaa;">最上位・最新モデル</div>
+          <div style="font-size:9px;color:var(--red);margin-top:6px;background:var(--rl);border-radius:4px;padding:3px 6px;opacity:1;">⚠ 現在利用停止中</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--sub2);background:var(--rl);border:1px solid #e8c4bf;border-radius:6px;padding:8px 12px;margin-top:8px;line-height:1.6;">
@@ -2024,7 +2023,7 @@
     <div style="background:var(--rl);border-radius:8px;padding:12px 18px;text-align:center;">
       <div style="font-size:13px;color:var(--red);font-weight:600;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Claudeでは、ユーザーが自分で許可しない限り入力データはAI学習に<strong>使われません</strong>（Settings → Privacy で確認）
+        初期設定では入力データがAI学習に使われる可能性があります。<strong>Settings → Privacy</strong> で学習利用を<strong>OFFにしておきましょう</strong>
       </div>
     </div>
   </section>
