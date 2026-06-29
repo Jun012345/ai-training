@@ -2387,72 +2387,39 @@
   <section class="sec" style="border-color:#d2b8e3;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--purple);">1</div>
-      <div class="sec-title">HTMLで簡単なKATIXスライドを作る</div>
+      <div class="sec-title">HTMLでKATIXスライドを作る</div>
     </div>
-    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIに指示を出して、<strong style="color:var(--purple);">Webブラウザで表示できるスライド</strong>を作ってみましょう。プログラミングの知識がなくても、AIとの対話だけで完成します</p>
+    <p style="font-size:14px;color:var(--sub);margin-bottom:16px;">AIへの指示だけで、<strong style="color:var(--purple);">ブラウザで見れるプレゼン資料</strong>を作ってみよう</p>
 
-    <div style="background:var(--pl);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
-      <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        KATIXスライドとは？
+    <div class="flow" style="margin-bottom:16px;">
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><br>
+        Claudeに指示
+        <small>「KATIXの紹介スライドを<br>HTMLで作って」</small>
       </div>
-      <p style="font-size:13px;color:var(--sub);line-height:1.8;">
-        HTML（ウェブページを作る言語）を使った<strong style="color:var(--text);">1ファイルで完結するプレゼン資料</strong>です。<br>
-        PowerPointのようにソフトが不要で、<strong style="color:var(--text);">ブラウザさえあればどこでも表示</strong>できます。
-      </p>
-    </div>
-
-    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      やってみよう — 4ステップ
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">1</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Claudeに指示を出す</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            例: 「KATIXという会社のサービス紹介スライドをHTMLで作ってください。<br>
-            3ページ構成で、タイトル・特徴・お問い合わせの順にしてください」
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg><br>
+        .htmlで保存
+        <small>デスクトップに保存</small>
       </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">2</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">生成されたコードを保存する</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            AIが生成したHTMLコードをコピーして、<strong style="color:var(--text);">katix-slide.html</strong> という名前でデスクトップに保存
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="var(--purple)" opacity=".3"/></svg><br>
+        ブラウザで確認
+        <small>ダブルクリックで開く</small>
       </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">3</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">ブラウザで開いて確認する</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            保存したファイルをダブルクリック → ブラウザで表示される
-          </div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">4</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">AIに修正を依頼して改善する</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            「色をもっと落ち着いた感じに」「ロゴを左上に配置して」など、<br>
-            <strong style="color:var(--text);">日本語で修正指示を出すだけ</strong>でデザインが変わります
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><br>
+        修正を依頼
+        <small>「色を変えて」等</small>
       </div>
     </div>
 
-    <div style="background:#fff8e1;border:1.5px solid #f0c040;border-radius:10px;padding:14px 18px;">
-      <div style="font-size:13px;color:#b8860b;display:flex;align-items:flex-start;gap:8px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <div><strong style="color:var(--text);">プロンプトのコツ:</strong> 「3ページ」「色は青系」「会社名はKATIX」など、<strong style="color:var(--text);">具体的な条件</strong>を入れるほど、思い通りの結果に近づきます</div>
-      </div>
+    <div class="tip" style="background:var(--pl);color:var(--purple);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      コツ: 「3ページ」「青系」「会社名はKATIX」など具体的な条件を入れると精度UP
     </div>
   </section>
 
@@ -2460,85 +2427,39 @@
   <section class="sec" style="border-color:#d2b8e3;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--purple);">2</div>
-      <div class="sec-title">簡単なChrome拡張機能を作る</div>
+      <div class="sec-title">Chrome拡張機能を作る</div>
     </div>
-    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">ブラウザに<strong style="color:var(--purple);">自分だけの便利ツール</strong>を追加できる「拡張機能（エクステンション）」。AIの力を借りれば、プログラマーでなくても作れます</p>
+    <p style="font-size:14px;color:var(--sub);margin-bottom:16px;">ブラウザに<strong style="color:var(--purple);">自分だけの便利ボタン</strong>を追加してみよう。必要なファイルはたった2つ</p>
 
-    <div style="background:var(--pl);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
-      <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        Chrome拡張機能とは？
+    <div class="flow" style="margin-bottom:16px;">
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><br>
+        機能を決める
+        <small>例: URL+タイトルを<br>コピーするボタン</small>
       </div>
-      <p style="font-size:13px;color:var(--sub);line-height:1.8;">
-        Google Chromeブラウザに<strong style="color:var(--text);">追加機能を付ける小さなプログラム</strong>です。<br>
-        例: ページの文字数を数える、選択したテキストを翻訳する、メモを取る、など。<br>
-        <strong style="color:var(--text);">2〜3個のファイルを作るだけ</strong>で動きます。
-      </p>
-    </div>
-
-    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      やってみよう — 4ステップ
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">1</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">作りたい機能を決める</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            最初はシンプルなものがおすすめ:<br>
-            <strong style="color:var(--text);">「今見ているページのタイトルとURLをコピーするボタン」</strong>など
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><br>
+        Claudeに依頼
+        <small>「Chrome拡張を作って」</small>
       </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">2</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Claudeに拡張機能を作ってもらう</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            例: 「Chrome拡張機能を作ってください。ボタンを押すと、今のページのタイトルとURLをクリップボードにコピーする機能です。manifest.jsonとpopup.htmlを作ってください」
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg><br>
+        フォルダに保存
+        <small>manifest.json +<br>popup.html</small>
       </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">3</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">ファイルをフォルダにまとめて保存</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            デスクトップに<strong style="color:var(--text);">「my-extension」</strong>フォルダを作り、<br>
-            AIが生成した <strong style="color:var(--text);">manifest.json</strong>（設定ファイル）と <strong style="color:var(--text);">popup.html</strong>（画面）を保存
-          </div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">4</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Chromeに読み込んで動かす</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            Chromeで <strong style="color:var(--text);">chrome://extensions</strong> を開く →<br>
-            右上の「デベロッパーモード」をON →<br>
-            「パッケージ化されていない拡張機能を読み込む」→ フォルダを選択 → 完成！
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><br>
+        Chromeに読込
+        <small>chrome://extensions<br>→ 読み込み</small>
       </div>
     </div>
 
-    <div style="display:flex;gap:12px;">
-      <div style="flex:1;background:var(--pl);border:1.5px solid #d2b8e3;border-radius:10px;padding:14px;">
-        <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:6px;">必要なファイル（たった2つ）</div>
-        <div style="font-size:12px;color:var(--sub);line-height:1.8;">
-          <strong style="color:var(--text);">manifest.json</strong> — 拡張機能の名前や設定<br>
-          <strong style="color:var(--text);">popup.html</strong> — ボタンを押した時の画面
-        </div>
-      </div>
-      <div style="flex:1;background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:14px;">
-        <div style="font-size:13px;font-weight:700;color:var(--g2);margin-bottom:6px;">うまくいかない時は</div>
-        <div style="font-size:12px;color:var(--sub);line-height:1.8;">
-          エラーが出たら<strong style="color:var(--text);">画面をスクショしてClaudeに貼り付ける</strong>だけ。<br>
-          AIが原因を特定して直してくれます
-        </div>
-      </div>
+    <div class="tip" style="background:var(--pl);color:var(--purple);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      エラーが出たら画面をスクショしてClaudeに貼るだけ。AIが直してくれます
     </div>
   </section>
 
@@ -2546,78 +2467,47 @@
   <section class="sec" style="border-color:#d2b8e3;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--purple);">3</div>
-      <div class="sec-title">制作物を踏まえ、次回に役立てられるSkillを作る</div>
+      <div class="sec-title">Skillを作って次回に活かす</div>
     </div>
-    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">チャレンジ1・2で作ったものの<strong style="color:var(--purple);">「作り方」を再利用可能な手順書（スキル）</strong>として保存します。次に似たものを作るとき、一から説明しなくても一発で作れるようになります</p>
+    <p style="font-size:14px;color:var(--sub);margin-bottom:16px;">今回の「作り方」を<strong style="color:var(--purple);">再利用できるレシピ（スキル）</strong>に保存。次からは<strong style="color:var(--purple);">コマンド一発</strong>で同じ作業ができる</p>
 
-    <div style="background:var(--pl);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
-      <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-        Skill（スキル）とは？
+    <div class="flow" style="margin-bottom:16px;">
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg><br>
+        やったことを振り返り
+        <small>うまくいったコツを<br>整理する</small>
       </div>
-      <p style="font-size:13px;color:var(--sub);line-height:1.8;">
-        Claude Codeの「<strong style="color:var(--text);">スキル</strong>」は、<strong style="color:var(--text);">よく使う作業手順をテンプレート化</strong>したものです。<br>
-        料理で言えば「レシピ」のようなもの。一度作れば、次からは<strong style="color:var(--text);">「/スキル名」と打つだけ</strong>で同じ作業を再現できます。
-      </p>
-    </div>
-
-    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:6px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      やってみよう — 3ステップ
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">1</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">今回やったことを振り返る</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            チャレンジ1・2で<strong style="color:var(--text);">AIにどんな指示を出したか</strong>、<strong style="color:var(--text);">どこでつまずいたか</strong>を思い出す。<br>
-            「こう言ったらうまくいった」というコツが次回のスキルの中身になります
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><br>
+        スキルにまとめて
+        <small>「/make-slide で<br>使えるようにして」</small>
       </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">2</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">Claudeにスキルを作ってもらう</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            例: 「さっき作ったHTMLスライドの作り方をスキルにまとめてください。<br>
-            次に別の会社のスライドを作るとき、<strong style="color:var(--text);">/make-slide</strong> と打つだけで使えるようにしたいです」
-          </div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:30px;height:30px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;">3</div>
-        <div style="flex:1;background:var(--pl);border-radius:8px;padding:12px 16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">スキルをテストする</div>
-          <div style="font-size:12px;color:var(--sub);line-height:1.6;">
-            新しいチャットで <strong style="color:var(--text);">/make-slide</strong> と打って、ちゃんとスライドが生成されるか確認。<br>
-            うまくいかなければ「このスキルの○○を修正して」と伝えて改善
-          </div>
-        </div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><polyline points="20 6 9 17 4 12"/></svg><br>
+        テストして完成
+        <small>新チャットで<br>/make-slide を実行</small>
       </div>
     </div>
 
-    <div style="display:flex;gap:12px;margin-bottom:16px;">
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
       <div style="flex:1;background:var(--pl);border:1.5px solid #d2b8e3;border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:6px;">スキルなし</div>
         <div style="font-size:24px;margin-bottom:4px;">😓</div>
-        <div style="font-size:11px;color:var(--sub);line-height:1.5;">毎回ゼロから<br>長い指示を書く</div>
+        <div style="font-size:12px;font-weight:700;color:var(--purple);">スキルなし</div>
+        <div style="font-size:11px;color:var(--sub);">毎回ゼロから長い指示</div>
       </div>
       <div style="display:flex;align-items:center;color:var(--purple);font-size:24px;font-weight:700;">→</div>
       <div style="flex:1;background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:14px;text-align:center;">
-        <div style="font-size:12px;font-weight:700;color:var(--g2);margin-bottom:6px;">スキルあり</div>
         <div style="font-size:24px;margin-bottom:4px;">🚀</div>
-        <div style="font-size:11px;color:var(--sub);line-height:1.5;">コマンド一発で<br>高品質な成果物</div>
+        <div style="font-size:12px;font-weight:700;color:var(--g2);">スキルあり</div>
+        <div style="font-size:11px;color:var(--sub);">コマンド一発で完成</div>
       </div>
     </div>
 
-    <div style="background:var(--pl);border-radius:8px;padding:12px 18px;text-align:center;">
-      <div style="font-size:13px;color:var(--purple);font-weight:600;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        スキルは「自分専用のAIアシスタント」を育てるようなもの。使えば使うほど、AIとの仕事が速くなります
-      </div>
+    <div class="tip" style="background:var(--pl);color:var(--purple);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      スキルは「自分専用のAIレシピ」。使うほどAIとの仕事が速くなる
     </div>
   </section>
 
