@@ -235,7 +235,7 @@
   .tab-btn:hover{background:var(--gl2);transform:translateY(-2px);box-shadow:0 4px 16px rgba(30,60,40,.12);}
   .tab-btn.active{border-color:var(--g);background:var(--gl2);box-shadow:0 4px 16px rgba(59,155,90,.18);}
   .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);box-shadow:0 4px 16px rgba(52,152,219,.18);}
-  .tab-btn[data-tab="advanced"].active{border-color:var(--purple);background:var(--pl);box-shadow:0 4px 16px rgba(142,68,173,.18);}
+  .tab-btn[data-tab="advanced"].active{border-color:var(--red);background:var(--rl);box-shadow:0 4px 16px rgba(192,57,43,.18);}
   .tab-btn[data-tab="overview"].active{border-color:var(--orange);background:var(--ol);box-shadow:0 4px 16px rgba(230,126,34,.18);}
   .tab-btn .dot{
     width:48px;height:48px;border-radius:50%;flex-shrink:0;
@@ -277,9 +277,8 @@
       オプショナル
     </button>
     <button class="tab-btn" data-tab="advanced" onclick="switchTab('advanced')">
-      <span class="dot" style="background:var(--pl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/></svg></span>
-      アドバンス
-      <span class="badge" style="background:var(--pl);color:var(--purple);">準備中</span>
+      <span class="dot" style="background:var(--rl);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><circle cx="12" cy="16" r="1"/></svg></span>
+      セキュリティ
     </button>
   </div>
 </div>
@@ -567,10 +566,64 @@
     <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 7.5h10a1 1 0 011 1v6a1 1 0 01-1 1h-4l-2.5 2.5v-2.5H7a1 1 0 01-1-1v-6a1 1 0 011-1z" fill="white"/></svg> セッション（会話のまとまり）を分けると、テーマごとに整理できて便利！</div>
   </section>
 
-  <!-- ══ 4. モデルの違い ══ -->
+  <!-- ══ 4. ファイルの渡し方 ══ -->
   <section class="sec">
     <div class="sec-head">
       <div class="sec-num">4</div>
+      <div class="sec-title">ファイル・画像の渡し方</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeは文章だけでなく、<strong>ファイルや画像を読み取る</strong>ことができます</p>
+
+    <div style="display:flex;gap:10px;margin-bottom:14px;">
+      <div style="flex:1;background:var(--gl2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5" style="display:block;margin:0 auto 6px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">文書ファイル</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">PDF・Word（DOCX）<br>Excel（XLSX）・CSV<br>テキスト・HTML</div>
+      </div>
+      <div style="flex:1;background:var(--gl2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5" style="display:block;margin:0 auto 6px;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">画像ファイル</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">JPEG・PNG<br>GIF・WebP<br>スクリーンショットもOK</div>
+      </div>
+      <div style="flex:1;background:var(--gl2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5" style="display:block;margin:0 auto 6px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">PDF</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">テキスト＋図表<br>両方を読み取り可能<br>（100ページ以下推奨）</div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">渡し方は3つ</div>
+      <div style="display:flex;gap:10px;">
+        <div style="flex:1;background:var(--gl2);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:4px;">📎</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text);">＋ボタン</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">入力欄の左下にある<br>＋ボタンから選択</div>
+        </div>
+        <div style="flex:1;background:var(--gl2);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:4px;">🖱️</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text);">ドラッグ＆ドロップ</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">ファイルをそのまま<br>チャット画面に投げ込む</div>
+        </div>
+        <div style="flex:1;background:var(--gl2);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:4px;">📋</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text);">コピペ</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">スクリーンショットを<br>Ctrl+V / ⌘+V で貼付</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;color:var(--sub);background:var(--gl2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;line-height:1.7;">
+      <strong style="color:var(--text);">制限：</strong>1ファイル最大<strong style="color:var(--g2);">500MB</strong>、一度に<strong style="color:var(--g2);">最大20ファイル</strong>まで添付可能。Word等の文書は<strong style="color:var(--text);">テキストのみ抽出</strong>（埋め込み画像は読めません）
+    </div>
+
+    <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg> 「このExcel分析して」「この画像の文字読んで」— ファイルを渡すだけでOK！</div>
+  </section>
+
+  <!-- ══ 5. モデルの違い ══ -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">5</div>
       <div class="sec-title">モデルの違い：得意・不得意を知ろう</div>
     </div>
     <table class="mtable">
@@ -596,10 +649,10 @@
     </div>
   </section>
 
-  <!-- ══ 5. 利用制限 ══ -->
+  <!-- ══ 6. 利用制限 ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">5</div>
+      <div class="sec-num">6</div>
       <div class="sec-title">利用制限を知っておこう</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Claudeには<strong>週単位</strong>と<strong>5時間単位</strong>の利用上限があります</p>
@@ -676,48 +729,75 @@
       </div>
 
       <div style="font-size:12px;color:var(--sub);background:var(--gl2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;line-height:1.7;">
-        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、すべて<strong style="color:var(--g2);">「何トークン使ったか」</strong>で決まります。<br>
-        重いモデル（Opus）＋深い思考（MAX）＝ トークン消費が大きい → 枠の減りが早い
+        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、すべて<strong style="color:var(--g2);">「何トークン使ったか」</strong>で決まります。
       </div>
-    </div>
 
-    <!-- 賢い使い方 -->
-    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">枠を賢く使うコツ</div>
-    <div style="display:flex;gap:12px;margin-bottom:14px;">
-      <div class="ex ex-good" style="flex:1;">
-        <div class="ex-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
-          節約テクニック
+      <!-- バイクのたとえ -->
+      <div style="margin-top:14px;background:linear-gradient(135deg,#f0faf3,#e8f5ec);border:1.5px solid var(--g);border-radius:10px;padding:18px 22px;">
+        <div style="font-size:14px;font-weight:700;color:var(--g2);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="1.8"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-7h4l2.5 3.5h3.5"/><path d="M8.5 10.5l2-4h3"/></svg>
+          バイクで例えると…トークン＝ガソリン！
         </div>
-        <p style="font-size:13px;line-height:1.7;">
-          <strong>簡単な質問</strong> → Haikuで即答<br>
-          <strong>普段の仕事</strong> → Sonnetでバランス<br>
-          <strong>重要な仕事だけ</strong> → Opusで全力
+        <p style="font-size:13px;color:var(--sub);line-height:1.8;margin-bottom:14px;">
+          AIを使うことは<strong style="color:var(--text);">バイクで走る</strong>ようなもの。<br>
+          トークンは<strong style="color:var(--text);">ガソリン</strong>で、使えば減っていきます。
         </p>
-      </div>
-      <div class="ex ex-bad" style="flex:1;">
-        <div class="ex-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          枠を浪費する使い方
+
+        <div style="display:flex;gap:10px;margin-bottom:14px;">
+          <div style="flex:1;background:var(--white);border-radius:8px;padding:14px;text-align:center;border:1px solid var(--border);">
+            <div style="font-size:28px;margin-bottom:4px;">🏍️</div>
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;">Opus（大型バイク）</div>
+            <div style="font-size:11px;color:var(--sub);">パワフルだけど</div>
+            <div style="font-size:12px;font-weight:700;color:#e74c3c;">燃費が悪い</div>
+          </div>
+          <div style="flex:1;background:var(--white);border-radius:8px;padding:14px;text-align:center;border:1.5px solid var(--g);">
+            <div style="font-size:28px;margin-bottom:4px;">🛵</div>
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;">Sonnet（街乗りバイク）</div>
+            <div style="font-size:11px;color:var(--sub);">バランス良く</div>
+            <div style="font-size:12px;font-weight:700;color:var(--g2);">燃費も◎</div>
+          </div>
+          <div style="flex:1;background:var(--white);border-radius:8px;padding:14px;text-align:center;border:1px solid var(--border);">
+            <div style="font-size:28px;margin-bottom:4px;">🚲</div>
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;">Haiku（自転車）</div>
+            <div style="font-size:11px;color:var(--sub);">軽い用事なら</div>
+            <div style="font-size:12px;font-weight:700;color:var(--g2);">ほぼ消費ゼロ</div>
+          </div>
         </div>
-        <p style="font-size:13px;line-height:1.7;">
-          <strong>全部Opus + MAX</strong>で使う<br>
-          <strong>同じ質問</strong>を何度も聞く<br>
-          <strong>長い会話</strong>を/compactせず続ける
-        </p>
+
+        <div style="background:var(--white);border-radius:8px;padding:14px 16px;border:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:700;color:var(--g2);margin-bottom:8px;">🏁 走行距離をのばすコツ</div>
+          <div style="font-size:12.5px;color:var(--sub);line-height:1.8;">
+            ずっと大型バイクで走り続けたら、すぐガス欠になります。<br>
+            <strong style="color:var(--text);">目的地に合わせてバイクを乗り換える</strong>のが賢い走り方です：
+          </div>
+          <div style="display:flex;gap:8px;margin-top:10px;">
+            <div style="flex:1;background:var(--gl2);border-radius:6px;padding:10px;font-size:12px;line-height:1.7;">
+              <div style="font-weight:700;color:var(--g2);margin-bottom:2px;">✅ 燃費よく走る</div>
+              <span style="color:var(--sub);">ちょっとした質問 → <strong style="color:var(--text);">Haiku</strong><br>
+              普段の仕事 → <strong style="color:var(--text);">Sonnet</strong><br>
+              ここぞの大仕事 → <strong style="color:var(--text);">Opus</strong></span>
+            </div>
+            <div style="flex:1;background:#fef2f2;border-radius:6px;padding:10px;font-size:12px;line-height:1.7;">
+              <div style="font-weight:700;color:#e74c3c;margin-bottom:2px;">❌ すぐガス欠になる</div>
+              <span style="color:var(--sub);">全部<strong style="color:var(--text);">Opus + MAX</strong>で使う<br>
+              同じ質問を何度も聞く<br>
+              長い会話を圧縮せず続ける</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="tip">
       <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 5.5a4 4 0 012.8 6.9V14.5a1 1 0 01-1 1h-3.6a1 1 0 01-1-1v-2.1A4 4 0 0112 5.5z" fill="white"/><rect x="10" y="17" width="4" height="1.5" rx=".75" fill="white"/></svg>
-      タスクに合ったモデルと出力を選べば、1週間ずっと快適に使えます！
+      目的地に合ったバイクを選べば、1週間ずっとガス欠知らずで走れます！
     </div>
   </section>
 
-  <!-- ══ 6. プロンプト ══ -->
+  <!-- ══ 7. プロンプト ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">6</div>
+      <div class="sec-num">7</div>
       <div class="sec-title">プロンプト（指示）の書き方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">良いプロンプト ＝ <strong>具体的</strong>で、<strong>わかりやすく</strong>、<strong>目的を明確に</strong></p>
@@ -749,10 +829,10 @@
     </div>
   </section>
 
-  <!-- ══ 7. 思考レベル ══ -->
+  <!-- ══ 8. 思考レベル ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">7</div>
+      <div class="sec-num">8</div>
       <div class="sec-title">モデルの種類と思考レベル</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">同じAIでも「どのモデルで動かすか」で、速さ・賢さ・コストが変わります</p>
@@ -872,10 +952,10 @@
     </div>
   </section>
 
-  <!-- ══ 8. 権限モード ══ -->
+  <!-- ══ 9. 権限モード ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">8</div>
+      <div class="sec-num">9</div>
       <div class="sec-title">権限モード：Claudeの動き方を決めよう</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Claudeが作業するとき、<strong>どこまで自動で進めるか</strong>を5段階で設定できます</p>
@@ -954,10 +1034,10 @@
     </div>
   </section>
 
-  <!-- ══ 9. セッション ══ -->
+  <!-- ══ 10. セッション ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">9</div>
+      <div class="sec-num">10</div>
       <div class="sec-title">セッションの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:10px;">会話の「まとまり」をセッションとして管理できます</p>
@@ -983,10 +1063,10 @@
     <div class="tip"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M5 9V7a1 1 0 011-1h3l2 2h7a1 1 0 011 1v7a1 1 0 01-1 1H6a1 1 0 01-1-1z" fill="white"/></svg> プロジェクトやテーマごとに分けると、整理しやすくなります！</div>
   </section>
 
-  <!-- ══ 10. コンテキスト ══ -->
+  <!-- ══ 11. コンテキスト ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">10</div>
+      <div class="sec-num">11</div>
       <div class="sec-title">コンテキストとは？</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIとの会話はすべて「コンテキスト」として蓄積されます。あなたが伝えた情報が多いほど、AIはより正確に応えられます</p>
@@ -1082,10 +1162,10 @@
     </div>
   </section>
 
-  <!-- ══ 11. コマンド ══ -->
+  <!-- ══ 12. コマンド ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">11</div>
+      <div class="sec-num">12</div>
       <div class="sec-title">スラッシュコマンドの使い方</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">Codeモードで使える便利なコマンドです</p>
@@ -1137,10 +1217,10 @@
     </div>
   </section>
 
-  <!-- ══ 12. 学び続ける ══ -->
+  <!-- ══ 13. 学び続ける ══ -->
   <section class="sec">
     <div class="sec-head">
-      <div class="sec-num">12</div>
+      <div class="sec-num">13</div>
       <div class="sec-title">AIはアプデが多い！自分で探しに行く習慣を</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:12px;">AIの世界は日々進化しています</p>
@@ -1481,10 +1561,72 @@
     </div>
   </section>
 
-  <!-- ══ O-5. プラグインとは ══ -->
+  <!-- ══ O-5. CLAUDE.mdとは ══ -->
   <section class="sec" style="border-color:#c4dff0;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--blue);">5</div>
+      <div class="sec-title">CLAUDE.mdって何？</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">SKILL.mdがスキルの指示書なら、<strong>CLAUDE.md</strong>は<strong>プロジェクト全体の指示書</strong>です</p>
+
+    <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;">SKILL.md と CLAUDE.md の違い</div>
+      <div style="display:flex;gap:14px;">
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:14px;text-align:center;border:1px solid #c4dff0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="display:block;margin:0 auto 6px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:4px;">SKILL.md</div>
+          <div style="font-size:11px;color:var(--sub);line-height:1.5;">特定の作業用の指示書<br>「議事録を作るとき」<br>「メールを書くとき」</div>
+        </div>
+        <div style="font-size:16px;color:var(--sub2);display:flex;align-items:center;font-weight:700;">vs</div>
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:14px;text-align:center;border:1.5px solid var(--blue);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="display:block;margin:0 auto 6px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>
+          <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:4px;">CLAUDE.md</div>
+          <div style="font-size:11px;color:var(--sub);line-height:1.5;">プロジェクト全体の指示書<br>「このフォルダでは常に」<br>「毎回このルールで」</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1.5px solid #c4dff0;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;">CLAUDE.md に書く内容の例</div>
+      <div style="background:#1e293b;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:12px;color:#e2e8f0;line-height:1.8;">
+        <span style="color:#94a3b8;"># プロジェクトルール</span><br>
+        - 日本語で回答すること<br>
+        - ファイルは ~/Documents/output/ に保存<br>
+        - コードにはコメントを付ける<br><br>
+        <span style="color:#94a3b8;"># よく使うコマンド</span><br>
+        - テスト: npm test<br>
+        - ビルド: npm run build
+      </div>
+      <div style="font-size:11px;color:var(--sub2);margin-top:8px;text-align:center;">Claudeは毎回のセッション開始時にこのファイルを自動で読み込みます</div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-bottom:14px;">
+      <div style="flex:1;background:var(--bl);border:1px solid #c4dff0;border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:4px;">🌐</div>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">グローバル</div>
+        <div style="font-size:10px;color:var(--sub2);margin-top:2px;">~/.claude/CLAUDE.md<br>すべてのプロジェクトで<br>常に適用</div>
+      </div>
+      <div style="flex:1;background:var(--bl);border:1.5px solid var(--blue);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:4px;">📁</div>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">プロジェクト</div>
+        <div style="font-size:10px;color:var(--sub2);margin-top:2px;">./CLAUDE.md<br>そのフォルダ内だけ<br>で適用</div>
+      </div>
+      <div style="flex:1;background:var(--bl);border:1px solid #c4dff0;border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:4px;">👤</div>
+        <div style="font-size:12px;font-weight:600;color:var(--text);">ローカル</div>
+        <div style="font-size:10px;color:var(--sub2);margin-top:2px;">./CLAUDE.local.md<br>自分だけの設定<br>（チーム共有しない）</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border:1px solid #c4dff0;border-radius:6px;padding:10px 14px;font-size:12px;color:var(--sub);line-height:1.7;">
+      <strong style="color:var(--text);">作り方：</strong>Claudeに<strong style="color:var(--blue);">「/init」</strong>と入力するだけ。Claudeがプロジェクトを分析して、自動でCLAUDE.mdを作ってくれます
+    </div>
+  </section>
+
+  <!-- ══ O-6. プラグインとは ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">6</div>
       <div class="sec-title">プラグインとは？</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Anthropicが用意した「業務別の専門スキルパック」です</p>
@@ -1516,10 +1658,10 @@
     </div>
   </section>
 
-  <!-- ══ O-6. プラグインの例と導入 ══ -->
+  <!-- ══ O-7. プラグインの例と導入 ══ -->
   <section class="sec" style="border-color:#c4dff0;">
     <div class="sec-head">
-      <div class="sec-num" style="background:var(--blue);">6</div>
+      <div class="sec-num" style="background:var(--blue);">7</div>
       <div class="sec-title">プラグインの例と導入</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">デスクトップアプリの「カスタマイズ」画面から追加できます</p>
@@ -1581,10 +1723,10 @@
     </div>
   </section>
 
-  <!-- ══ O-7. コネクタとは ══ -->
+  <!-- ══ O-8. コネクタとは ══ -->
   <section class="sec" style="border-color:#c4dff0;">
     <div class="sec-head">
-      <div class="sec-num" style="background:var(--blue);">7</div>
+      <div class="sec-num" style="background:var(--blue);">8</div>
       <div class="sec-title">コネクタとは？</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeを<strong>外部サービスに直接つなげる</strong>接続機能です。MCP（Model Context Protocol）というAI向けの通信規格がベースになっています</p>
@@ -1675,10 +1817,71 @@
     </div>
   </section>
 
-  <!-- ══ O-8. まとめ ══ -->
+  <!-- ══ O-9. メモリ機能 ══ -->
   <section class="sec" style="border-color:#c4dff0;">
     <div class="sec-head">
-      <div class="sec-num" style="background:var(--blue);">8</div>
+      <div class="sec-num" style="background:var(--blue);">9</div>
+      <div class="sec-title">メモリ機能：Claudeが覚えてくれる</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeは通常、セッションが変わると<strong>前の会話を忘れます</strong>。でもメモリ機能を使えば、<strong>好みや学びを次のセッションに引き継げます</strong></p>
+
+    <div style="display:flex;gap:14px;margin-bottom:14px;">
+      <div style="flex:1;background:#fef2f2;border-radius:10px;padding:16px;text-align:center;border:1px solid #e8b4b0;">
+        <div style="font-size:28px;margin-bottom:6px;">😶</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">メモリなし</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">
+          毎回「日本語で答えて」<br>
+          毎回「ファイルはここに保存」<br>
+          毎回同じ前置きが必要
+        </div>
+      </div>
+      <div style="font-size:18px;color:var(--sub2);display:flex;align-items:center;">→</div>
+      <div style="flex:1;background:#f0faf3;border-radius:10px;padding:16px;text-align:center;border:1.5px solid var(--g);">
+        <div style="font-size:28px;margin-bottom:6px;">🧠</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">メモリあり</div>
+        <div style="font-size:12px;color:var(--sub);line-height:1.6;">
+          好みを自動で覚える<br>
+          前回の学びを引き継ぐ<br>
+          繰り返し説明が不要に！
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border:1.5px solid #c4dff0;border-radius:10px;padding:18px 20px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">メモリの仕組み</div>
+      <div style="display:flex;gap:10px;margin-bottom:12px;">
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:12px;text-align:center;border:1px solid #c4dff0;">
+          <div style="font-size:22px;margin-bottom:4px;">💬</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);">会話中の学び</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:2px;">「pnpmを使って」<br>「敬語は不要」など</div>
+        </div>
+        <div style="font-size:14px;color:var(--sub2);display:flex;align-items:center;">→</div>
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:12px;text-align:center;border:1px solid #c4dff0;">
+          <div style="font-size:22px;margin-bottom:4px;">📝</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);">自動メモ保存</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:2px;">Claudeが重要と判断した<br>情報を自動で記録</div>
+        </div>
+        <div style="font-size:14px;color:var(--sub2);display:flex;align-items:center;">→</div>
+        <div style="flex:1;background:var(--white);border-radius:8px;padding:12px;text-align:center;border:1.5px solid var(--blue);">
+          <div style="font-size:22px;margin-bottom:4px;">🔄</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);">次回に反映</div>
+          <div style="font-size:10px;color:var(--sub);margin-top:2px;">次のセッション開始時に<br>メモを自動で読み込み</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--sub);background:var(--white);border:1px solid #c4dff0;border-radius:6px;padding:10px 14px;line-height:1.7;">
+        <strong style="color:var(--text);">覚えさせ方：</strong>「<strong style="color:var(--blue);">これ覚えておいて</strong>」と伝えるだけ。例：「いつも敬語なしで返して、って覚えておいて」→ 次回から自動適用
+      </div>
+    </div>
+
+    <div style="background:var(--bl);border:1px solid #c4dff0;border-radius:6px;padding:10px 14px;font-size:12px;color:var(--sub);line-height:1.7;">
+      <strong style="color:var(--text);">確認・管理：</strong><strong style="color:var(--blue);">/memory</strong> コマンドで保存されたメモリの一覧表示・編集・削除が可能。すべてテキストファイルなので自分で書き換えることもできます
+    </div>
+  </section>
+
+  <!-- ══ O-10. まとめ ══ -->
+  <section class="sec" style="border-color:#c4dff0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--blue);">10</div>
       <div class="sec-title">カスタマイズの全体像</div>
     </div>
     <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">Claudeには3つのカスタマイズ手段があります</p>
@@ -1716,15 +1919,149 @@
 </div>
 </div>
 
-<!-- ═══ Advanced Panel ═══ -->
+<!-- ═══ Security Panel ═══ -->
 <div class="tab-panel" id="panel-advanced">
-  <div style="max-width:900px;margin:0 auto;padding:40px 20px;">
-    <div style="background:var(--white);border-radius:var(--r);border:1.5px solid var(--border);box-shadow:var(--shadow);padding:48px 32px;text-align:center;color:var(--sub);">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" style="display:block;margin:0 auto 14px;"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20"/><path d="M12 21L8 10l4-7 4 7-4 11z"/></svg>
-      <div style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;">コンテンツ準備中</div>
-      <div style="font-size:14px;">上級者向けの活用法を追加予定です</div>
+<div class="grid">
+
+  <!-- ══ S-1. 入れていい情報・ダメな情報 ══ -->
+  <section class="sec" style="border-color:#e8b4b0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--red);">1</div>
+      <div class="sec-title">AIに入れていい情報・ダメな情報</div>
     </div>
-  </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIは便利ですが、<strong style="color:var(--red);">入れてはいけない情報</strong>があります。業務で使う前に必ず確認しましょう</p>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;background:#fef2f2;border:1.5px solid var(--red);border-radius:10px;padding:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          絶対に入れてはダメ
+        </div>
+        <div style="font-size:13px;color:var(--sub);line-height:2;">
+          <strong style="color:var(--text);">パスワード・暗証番号</strong><br>
+          <strong style="color:var(--text);">クレジットカード番号</strong><br>
+          <strong style="color:var(--text);">マイナンバー等の個人番号</strong><br>
+          <strong style="color:var(--text);">顧客の個人情報</strong>（氏名+住所+電話番号など）<br>
+          <strong style="color:var(--text);">社外秘の契約書・見積書</strong>
+        </div>
+      </div>
+      <div style="flex:1;background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--g2);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          入れてOKなもの
+        </div>
+        <div style="font-size:13px;color:var(--sub);line-height:2;">
+          <strong style="color:var(--text);">一般的な業務の質問</strong><br>
+          <strong style="color:var(--text);">公開済みの情報</strong>（Webサイトの文章など）<br>
+          <strong style="color:var(--text);">自分で作った文章の添削</strong><br>
+          <strong style="color:var(--text);">アイデア出し・ブレスト</strong><br>
+          <strong style="color:var(--text);">プログラムのコード</strong>（機密でないもの）
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff8e1;border:1.5px solid #f0c040;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:#b8860b;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8860b" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="1"/></svg>
+        迷ったらこう判断
+      </div>
+      <p style="font-size:13px;color:var(--sub);line-height:1.8;">
+        「この情報が<strong style="color:var(--text);">漏れたら困るか？</strong>」と想像してください。<br>
+        少しでも「困る」なら入力しない。判断に迷ったら<strong style="color:var(--text);">上司に相談</strong>してから。
+      </p>
+    </div>
+
+    <div style="background:var(--rl);border-radius:8px;padding:12px 18px;text-align:center;">
+      <div style="font-size:13px;color:var(--red);font-weight:600;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        AIに入れた情報は、学習データに使われる可能性があります（Proプランでは原則OFF）
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ S-2. AIが間違えた時の対処法 ══ -->
+  <section class="sec" style="border-color:#e8b4b0;">
+    <div class="sec-head">
+      <div class="sec-num" style="background:var(--red);">2</div>
+      <div class="sec-title">AIが間違えた時の対処法</div>
+    </div>
+    <p style="font-size:15px;color:var(--sub);margin-bottom:14px;">AIは<strong style="color:var(--red);">もっともらしいウソ</strong>をつくことがあります。これを<strong>ハルシネーション</strong>（幻覚）と呼びます</p>
+
+    <div style="background:#fef2f2;border:1.5px solid #e8b4b0;border-radius:10px;padding:18px 22px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px;">ハルシネーションとは？</div>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:14px;border:1px solid #e8b4b0;">
+          <div style="font-size:28px;margin-bottom:4px;">🤖</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);">AIの回答</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">自信たっぷりに<br>答えてくる</div>
+        </div>
+        <div style="font-size:18px;color:var(--red);font-weight:700;">≠</div>
+        <div style="flex:1;text-align:center;background:var(--white);border-radius:8px;padding:14px;border:1px solid #e8b4b0;">
+          <div style="font-size:28px;margin-bottom:4px;">📋</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);">事実</div>
+          <div style="font-size:11px;color:var(--sub);margin-top:2px;">でも内容が<br>間違っていることがある</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--sub);margin-top:10px;text-align:center;">特に<strong style="color:var(--text);">数値・日付・固有名詞・URLの引用</strong>で起きやすい</div>
+    </div>
+
+    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">間違いに気づいたら</div>
+    <div style="display:flex;gap:10px;margin-bottom:14px;">
+      <div style="flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--rl);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">①  やり直す</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">Escキーを2回押すと<br>直前の回答を取り消して<br>やり直せます（Rewind）</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+        <div style="width:36px;height:36px;border-radius:50%;background:#e8f4fd;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">②  指摘する</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">「それ違うよ」と<br>普通に伝えてOK<br>Claudeは修正してくれます</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+        <div style="width:36px;height:36px;border-radius:50%;background:#f0faf3;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">③  自分で確認する</div>
+        <div style="font-size:11px;color:var(--sub);line-height:1.5;">重要な情報は<br>必ず自分で裏取り<br>AIの答えを鵜呑みにしない</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;">
+      <div class="ex ex-good" style="flex:1;">
+        <div class="ex-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/></svg>
+          正しい使い方
+        </div>
+        <p style="font-size:13px;line-height:1.7;">
+          AIの回答を<strong>たたき台</strong>として活用<br>
+          重要な数字は<strong>原典で確認</strong><br>
+          「おかしい」と思ったら<strong>遠慮なく指摘</strong>
+        </p>
+      </div>
+      <div class="ex ex-bad" style="flex:1;">
+        <div class="ex-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          危険な使い方
+        </div>
+        <p style="font-size:13px;line-height:1.7;">
+          AIの回答を<strong>そのままコピペ</strong><br>
+          確認せず<strong>社外に送信</strong><br>
+          「AIが言ったから正しい」と<strong>思考停止</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="tip" style="background:var(--rl);color:var(--red);">
+      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="white"/></svg>
+      AIは「超優秀なアシスタント」であって「絶対に正しい先生」ではありません
+    </div>
+  </section>
+
+</div>
 </div>
 
 
