@@ -258,6 +258,9 @@
   .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);box-shadow:0 4px 16px rgba(52,152,219,.18);}
   .tab-btn[data-tab="advanced"].active{border-color:var(--red);background:var(--rl);box-shadow:0 4px 16px rgba(192,57,43,.18);}
   .tab-btn[data-tab="challenge"].active{border-color:var(--purple);background:var(--pl);box-shadow:0 4px 16px rgba(142,68,173,.18);}
+  #panel-challenge .flow-box{min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:14px 10px 12px;}
+  #panel-challenge .flow-box svg{flex-shrink:0;}
+  #panel-challenge .flow-box small{min-height:28px;}
   .tab-btn[data-tab="overview"].active{border-color:var(--orange);background:var(--ol);box-shadow:0 4px 16px rgba(230,126,34,.18);}
   .tab-btn .dot{
     width:48px;height:48px;border-radius:50%;flex-shrink:0;
@@ -2383,7 +2386,7 @@
 <div class="tab-panel" id="panel-challenge">
 <div class="grid">
 
-  <!-- ══ C-1. HTMLで簡単なKATIXスライドを作る ══ -->
+  <!-- ══ C-1. HTMLでKATIXスライドを作る ══ -->
   <section class="sec" style="border-color:#d2b8e3;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--purple);">1</div>
@@ -2395,35 +2398,35 @@
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><br>
         Claudeに指示
-        <small>「KATIXの紹介スライドを<br>HTMLで作って」</small>
+        <small>「KATIXの紹介を<br>HTMLで作って」</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg><br>
-        .htmlで保存
-        <small>デスクトップに保存</small>
+        ファイルに保存
+        <small>コードをコピーして<br>.html で保存</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="var(--purple)" opacity=".3"/></svg><br>
         ブラウザで確認
-        <small>ダブルクリックで開く</small>
+        <small>ファイルを<br>ダブルクリック</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><br>
         修正を依頼
-        <small>「色を変えて」等</small>
+        <small>「色を変えて」など<br>日本語で指示</small>
       </div>
     </div>
 
     <div class="tip" style="background:var(--pl);color:var(--purple);">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      コツ: 「3ページ」「青系」「会社名はKATIX」など具体的な条件を入れると精度UP
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      「3ページ」「青系」「会社名はKATIX」など具体的に指示するほど精度UP
     </div>
   </section>
 
-  <!-- ══ C-2. 簡単なChrome拡張機能を作る ══ -->
+  <!-- ══ C-2. Chrome拡張機能を作る ══ -->
   <section class="sec" style="border-color:#d2b8e3;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--purple);">2</div>
@@ -2433,75 +2436,67 @@
 
     <div class="flow" style="margin-bottom:16px;">
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><br>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><br>
         機能を決める
-        <small>例: URL+タイトルを<br>コピーするボタン</small>
+        <small>例: ページのURLを<br>コピーするボタン</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><br>
         Claudeに依頼
-        <small>「Chrome拡張を作って」</small>
+        <small>「Chrome拡張を<br>作ってください」</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg><br>
         フォルダに保存
-        <small>manifest.json +<br>popup.html</small>
+        <small>manifest.json と<br>popup.html</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><br>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M4 14a1 1 0 01-.78-1.63l9.9-10.2a.5.5 0 01.86.46l-1.92 6.02A1 1 0 0013 10h7a1 1 0 01.78 1.63l-9.9 10.2a.5.5 0 01-.86-.46l1.92-6.02A1 1 0 0011 14z"/></svg><br>
         Chromeに読込
-        <small>chrome://extensions<br>→ 読み込み</small>
+        <small>extensions ページで<br>フォルダを指定</small>
       </div>
     </div>
 
     <div class="tip" style="background:var(--pl);color:var(--purple);">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      エラーが出たら画面をスクショしてClaudeに貼るだけ。AIが直してくれます
+      エラーが出たら画面をスクショしてClaudeに貼るだけでOK
     </div>
   </section>
 
-  <!-- ══ C-3. 次回に役立てられるSkillを作る ══ -->
+  <!-- ══ C-3. Skillを作って次回に活かす ══ -->
   <section class="sec" style="border-color:#d2b8e3;">
     <div class="sec-head">
       <div class="sec-num" style="background:var(--purple);">3</div>
       <div class="sec-title">Skillを作って次回に活かす</div>
     </div>
-    <p style="font-size:14px;color:var(--sub);margin-bottom:16px;">今回の「作り方」を<strong style="color:var(--purple);">再利用できるレシピ（スキル）</strong>に保存。次からは<strong style="color:var(--purple);">コマンド一発</strong>で同じ作業ができる</p>
+    <p style="font-size:14px;color:var(--sub);margin-bottom:16px;">今回の作り方を<strong style="color:var(--purple);">再利用できるレシピ</strong>に保存。次からは<strong style="color:var(--purple);">コマンド一発</strong>で同じ作業ができる</p>
 
     <div class="flow" style="margin-bottom:16px;">
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg><br>
-        やったことを振り返り
-        <small>うまくいったコツを<br>整理する</small>
+        コツを振り返る
+        <small>うまくいった<br>指示を整理</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><br>
-        スキルにまとめて
+        スキル化を依頼
         <small>「/make-slide で<br>使えるようにして」</small>
       </div>
       <div class="flow-arrow" style="color:var(--purple);">→</div>
       <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><polyline points="20 6 9 17 4 12"/></svg><br>
-        テストして完成
-        <small>新チャットで<br>/make-slide を実行</small>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><br>
+        テストする
+        <small>新しいチャットで<br>コマンドを実行</small>
       </div>
-    </div>
-
-    <div style="display:flex;gap:12px;margin-bottom:14px;">
-      <div style="flex:1;background:var(--pl);border:1.5px solid #d2b8e3;border-radius:10px;padding:14px;text-align:center;">
-        <div style="margin-bottom:6px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="9" x2="10" y2="9"/></svg></div>
-        <div style="font-size:12px;font-weight:700;color:var(--purple);">スキルなし</div>
-        <div style="font-size:11px;color:var(--sub);">毎回ゼロから長い指示</div>
-      </div>
-      <div style="display:flex;align-items:center;color:var(--purple);font-size:24px;font-weight:700;">→</div>
-      <div style="flex:1;background:#f0faf3;border:1.5px solid var(--g);border-radius:10px;padding:14px;text-align:center;">
-        <div style="margin-bottom:6px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <div style="font-size:12px;font-weight:700;color:var(--g2);">スキルあり</div>
-        <div style="font-size:11px;color:var(--sub);">コマンド一発で完成</div>
+      <div class="flow-arrow" style="color:var(--purple);">→</div>
+      <div class="flow-box" style="background:var(--pl);border-color:#d2b8e3;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" style="margin-bottom:4px;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><br>
+        改善して完成
+        <small>気になる点を<br>伝えて修正</small>
       </div>
     </div>
 
