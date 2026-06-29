@@ -654,6 +654,33 @@
       </div>
     </div>
 
+    <!-- トークンとは -->
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:18px 24px;margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        この「枠」の正体＝「トークン」
+      </div>
+      <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">AIが文章を処理するときの<strong style="color:var(--text);">最小単位</strong>が「トークン」です。文字や単語を細かく分けたもので、すべてのAI操作はこの<strong style="color:var(--text);">トークン数</strong>で計算されます</p>
+
+      <div style="display:flex;gap:12px;margin-bottom:12px;">
+        <div style="flex:1;background:var(--gl2);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--border);">
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;">日本語の場合</div>
+          <div style="font-size:22px;font-weight:800;color:var(--g2);">1文字 ≈ 1〜2</div>
+          <div style="font-size:11px;color:var(--sub2);">トークン</div>
+        </div>
+        <div style="flex:1;background:var(--gl2);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--border);">
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;">英語の場合</div>
+          <div style="font-size:22px;font-weight:800;color:var(--g2);">1単語 ≈ 1</div>
+          <div style="font-size:11px;color:var(--sub2);">トークン</div>
+        </div>
+      </div>
+
+      <div style="font-size:12px;color:var(--sub);background:var(--gl2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;line-height:1.7;">
+        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、すべて<strong style="color:var(--g2);">「何トークン使ったか」</strong>で決まります。<br>
+        重いモデル（Opus）＋深い思考（MAX）＝ トークン消費が大きい → 枠の減りが早い
+      </div>
+    </div>
+
     <!-- 賢い使い方 -->
     <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">枠を賢く使うコツ</div>
     <div style="display:flex;gap:12px;margin-bottom:14px;">
@@ -828,7 +855,7 @@
           <div style="flex:1;background:var(--white);border-radius:6px;padding:10px;border:1px solid var(--border);text-align:center;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" style="margin-bottom:3px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <div style="font-size:11px;font-weight:600;color:var(--orange);margin-bottom:2px;">コスト注意</div>
-            <div style="font-size:10px;color:var(--sub);line-height:1.4;">追加クレジットが<br>消費される<br>（通常より高い）</div>
+            <div style="font-size:10px;color:var(--sub);line-height:1.4;">トークン消費が<br>通常より多い<br>（その分コスト増）</div>
           </div>
         </div>
       </div>
