@@ -213,16 +213,41 @@
   .tab-wrap{
     max-width:900px;margin:0 auto;padding:28px 20px 0;
     min-height:calc(100vh - 100px);
-    display:flex;align-items:center;justify-content:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
     transition:min-height .5s ease, align-items .5s ease;
   }
   .tab-wrap.docked{
     min-height:0;
-    align-items:flex-start;
+    align-items:center;
+    justify-content:flex-start;
   }
   .tab-btns{
     display:flex;gap:14px;width:100%;
     transition:transform .5s ease;
+  }
+  /* ── Landing hero ── */
+  .landing-hero{
+    text-align:center;margin-bottom:48px;
+    transition:opacity .4s ease, max-height .4s ease, margin .4s ease;
+    overflow:hidden;max-height:400px;
+  }
+  .tab-wrap.docked .landing-hero{
+    opacity:0;max-height:0;margin:0;pointer-events:none;
+  }
+  .landing-title{font-size:38px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-.5px;}
+  .landing-sub{font-size:16px;color:var(--sub);margin-bottom:28px;}
+  .landing-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .landing-chip{
+    font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .landing-hint{
+    text-align:center;margin-top:36px;
+    transition:opacity .4s ease, max-height .4s ease, margin .4s ease;
+    overflow:hidden;max-height:200px;
+  }
+  .tab-wrap.docked .landing-hint{
+    opacity:0;max-height:0;margin:0;pointer-events:none;
   }
   .tab-btn{
     flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -258,11 +283,33 @@
 <body>
 
 <!-- ═══ Header ═══ -->
-<header class="header" id="mainHeader">
+<header class="header hidden" id="mainHeader">
   <h1>AIの基礎ガイド</h1>
 </header>
 
 <div class="tab-wrap">
+  <div class="landing-hero">
+    <div class="landing-title">AIを味方につけよう</div>
+    <div class="landing-sub">仕事が変わる。まずは基礎から。</div>
+    <div class="landing-chips">
+      <span class="landing-chip" style="background:var(--ol);color:#b35a00;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        概要を知る
+      </span>
+      <span class="landing-chip" style="background:var(--gl);color:var(--g2);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        操作を学ぶ
+      </span>
+      <span class="landing-chip" style="background:var(--bl);color:#1a6fa0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        応用する
+      </span>
+      <span class="landing-chip" style="background:var(--rl);color:var(--red);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        安全に使う
+      </span>
+    </div>
+  </div>
   <div class="tab-btns">
     <button class="tab-btn" data-tab="overview" onclick="switchTab('overview')">
       <span class="dot" style="background:var(--ol);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
@@ -280,6 +327,12 @@
       <span class="dot" style="background:var(--rl);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="var(--red)" opacity=".12"/><rect x="9" y="9" width="6" height="7" rx="1" fill="none" stroke="var(--red)" stroke-width="1.5"/><circle cx="12" cy="12.5" r="1" fill="var(--red)" stroke="none"/><path d="M10 9V7a2 2 0 014 0v2" stroke="var(--red)" stroke-width="1.5"/></svg></span>
       セキュリティ
     </button>
+  </div>
+  <div class="landing-hint">
+    <p style="font-size:13px;color:var(--sub2);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sub2)" stroke-width="2" style="vertical-align:-2px;margin-right:4px;"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      気になるタブをクリックして始めましょう
+    </p>
   </div>
 </div>
 
