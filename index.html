@@ -241,14 +241,6 @@
     font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;
     display:flex;align-items:center;gap:6px;
   }
-  .landing-hint{
-    text-align:center;margin-top:36px;
-    transition:opacity .4s ease, max-height .4s ease, margin .4s ease;
-    overflow:hidden;max-height:200px;
-  }
-  .tab-wrap.docked .landing-hint{
-    opacity:0;max-height:0;margin:0;pointer-events:none;
-  }
   .tab-btn{
     flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
     padding:24px 16px 20px;cursor:pointer;
@@ -327,12 +319,6 @@
       <span class="dot" style="background:var(--rl);"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="var(--red)" opacity=".12"/><rect x="9" y="9" width="6" height="7" rx="1" fill="none" stroke="var(--red)" stroke-width="1.5"/><circle cx="12" cy="12.5" r="1" fill="var(--red)" stroke="none"/><path d="M10 9V7a2 2 0 014 0v2" stroke="var(--red)" stroke-width="1.5"/></svg></span>
       セキュリティ
     </button>
-  </div>
-  <div class="landing-hint">
-    <p style="font-size:13px;color:var(--sub2);">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sub2)" stroke-width="2" style="vertical-align:-2px;margin-right:4px;"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-      気になるタブをクリックして始めましょう
-    </p>
   </div>
 </div>
 
@@ -782,7 +768,8 @@
       </div>
 
       <div style="font-size:12px;color:var(--sub);background:var(--gl2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;line-height:1.7;">
-        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、すべて<strong style="color:var(--g2);">「何トークン使ったか」</strong>で決まります。
+        <strong style="color:var(--text);">つまり：</strong>利用制限も、1回の会話の長さ（コンテキスト）も、コストも、すべて<strong style="color:var(--g2);">「何トークン使ったか」</strong>で決まります。<br>
+        <span style="color:var(--sub2);font-size:11px;">※ 実際の消費量は入力した文字数だけでなく、AIの回答の長さや思考の深さによっても変わります</span>
       </div>
 
       <!-- バイクのたとえ -->
