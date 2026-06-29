@@ -258,9 +258,10 @@
   .tab-btn[data-tab="optional"].active{border-color:var(--blue);background:var(--bl);box-shadow:0 4px 16px rgba(52,152,219,.18);}
   .tab-btn[data-tab="advanced"].active{border-color:var(--red);background:var(--rl);box-shadow:0 4px 16px rgba(192,57,43,.18);}
   .tab-btn[data-tab="challenge"].active{border-color:var(--purple);background:var(--pl);box-shadow:0 4px 16px rgba(142,68,173,.18);}
-  #panel-challenge .flow-box{min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:14px 10px 12px;}
+  #panel-challenge .flow{flex-wrap:nowrap;}
+  #panel-challenge .flow-box{flex:1 1 0;min-width:0;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 8px 10px;}
   #panel-challenge .flow-box svg{flex-shrink:0;}
-  #panel-challenge .flow-box small{min-height:28px;}
+  #panel-challenge .flow-arrow{flex-shrink:0;}
   .tab-btn[data-tab="overview"].active{border-color:var(--orange);background:var(--ol);box-shadow:0 4px 16px rgba(230,126,34,.18);}
   .tab-btn .dot{
     width:48px;height:48px;border-radius:50%;flex-shrink:0;
